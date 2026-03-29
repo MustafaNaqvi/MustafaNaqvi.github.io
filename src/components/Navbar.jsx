@@ -59,7 +59,7 @@ export default function Navbar() {
             MN
           </div>
           <span style={{ fontFamily: 'var(--mono)', fontSize: '14px', color: 'var(--tx)', display: 'none' }} className="logo-text">
-            Mustafa Naqvi<span style={{ color: 'var(--gold)' }}>.dev</span>
+            Mustafa<span style={{ color: 'var(--gold)' }}>.dev</span>
           </span>
         </a>
 

@@ -27,17 +27,6 @@ npm run dev
 - Email: mustafa-naqvi@outlook.com
 - LinkedIn: [linkedin.com/in/mustafanaqvi](https://linkedin.com/in/mustafanaqvi)
 - Location: Islamabad, Pakistan
-(https://fonts.google.com/specimen/Inter), [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono)
-
----
-
-Built with ❤️ by Mustafa Naqvi
-ttps://fonts.google.com/specimen/Inter), [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono)
-
----
-
-Built with ❤️ by Mustafa Naqvi
-(https://fonts.google.com/specimen/Inter), [JetBrains Mono](https://fonts.google.com/specimen/JetBrains+Mono)
 
 ---
 

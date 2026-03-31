@@ -11,8 +11,8 @@ const experiences = [
     period: '2022 — 2023',
     company: 'Mobify / The Knights',
     role: 'Unity Developer',
-    description: 'Shipped mobile titles with 16M+ combined downloads. Implemented Addressables reducing crashes by 20%. Increased engagement by 15%.',
-    highlights: ['16M+ Downloads', 'Unity Addressables', 'Mobile Optimization'],
+    description: 'Shipped mobile titles with combined downloads in millions. Implemented Addressables reducing crashes by 20%. Increased engagement by 15%.',
+    highlights: ['Crash Reduction', 'Unity Addressables', 'Mobile Optimization'],
   },
   {
     period: '2021 — 2022',

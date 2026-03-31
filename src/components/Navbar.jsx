@@ -92,8 +92,36 @@ export default function Navbar() {
               {link.label}
             </button>
           ))}
-          
-          {/* Availability Badge */}
+                    {/* Resume Link */}
+          <a
+            href="https://drive.google.com/file/d/126JK5nhnlid-hDIT9NL61c0U4jNtD1fm/view"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              padding: '8px 16px',
+              marginLeft: '8px',
+              background: 'transparent',
+              border: '1px solid var(--b2)',
+              borderRadius: '6px',
+              fontFamily: 'var(--mono)',
+              fontSize: '13px',
+              color: 'var(--gold)',
+              cursor: 'pointer',
+              textDecoration: 'none',
+              transition: 'all 0.2s ease',
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.background = 'var(--goldbg)'
+              e.target.style.borderColor = 'var(--gold)'
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.background = 'transparent'
+              e.target.style.borderColor = 'var(--b2)'
+            }}
+          >
+            📄 Resume
+          </a>
+                    {/* Availability Badge */}
           <div style={{
             display: 'flex',
             alignItems: 'center',

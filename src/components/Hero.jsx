@@ -379,6 +379,15 @@ export default function Hero() {
           <a href="#contact" className="btn btn-secondary">
             Get in Touch
           </a>
+          <a 
+            href="https://drive.google.com/file/d/126JK5nhnlid-hDIT9NL61c0U4jNtD1fm/view" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-secondary"
+            style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+          >
+            📄 Resume
+          </a>
         </div>
       </div>
 

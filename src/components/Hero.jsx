@@ -341,7 +341,7 @@ export default function Hero() {
           color: 'var(--td)',
           lineHeight: 1.7,
         }}>
-          Building <span style={{ color: 'var(--blue)' }}>real-time multiplayer systems</span> and 
+          Building <span style={{ color: 'var(--green-bright)' }}>real-time multiplayer systems</span> and 
           scalable backends. <span style={{ color: 'var(--gold)' }}>100M+ combined downloads</span> shipped.
           From custom game servers to production APIs.
         </p>
@@ -355,16 +355,16 @@ export default function Hero() {
           marginBottom: '48px',
         }}>
           {[
-            { value: '6+', label: 'Years' },
-            { value: '100M+', label: 'Downloads' },
-            { value: '<120ms', label: 'Latency' },
-            { value: '40+', label: 'Concurrent' },
+            { value: '6+', label: 'Years Experience' },
+            { value: '100M+', label: 'Game Downloads' },
+            { value: '<120ms', label: 'Server Latency' },
+            { value: '40+', label: 'Concurrent Players' },
           ].map((stat) => (
             <div key={stat.label} style={{ textAlign: 'center' }}>
               <div style={{ fontFamily: 'var(--mono)', fontSize: '28px', fontWeight: 700, color: 'var(--gold)' }}>
                 {stat.value}
               </div>
-              <div style={{ fontSize: '13px', color: 'var(--tm)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+              <div style={{ fontSize: '12px', color: 'var(--tm)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                 {stat.label}
               </div>
             </div>

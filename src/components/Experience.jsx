@@ -136,7 +136,7 @@ export default function Experience() {
                 <p style={{
                   fontFamily: 'var(--mono)',
                   fontSize: '13px',
-                  color: 'var(--blue)',
+                  color: 'var(--green-bright)',
                   marginBottom: '12px',
                 }}>
                   {exp.role}

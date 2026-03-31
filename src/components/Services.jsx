@@ -8,8 +8,8 @@ const services = [
   {
     icon: '⚡',
     title: 'Multiplayer Systems',
-    description: 'Real-time multiplayer architecture with smooth state synchronization. Custom game servers achieving <120ms latency.',
-    tags: ['Photon', 'WebSocket', 'Mirror', 'Real-time'],
+    description: 'Real-time multiplayer architecture with custom socket-based solutions. Smooth state synchronization with <120ms latency.',
+    tags: ['WebSocket', 'Socket.IO', 'UDP/TCP', 'Real-time'],
   },
   {
     icon: '🔧',

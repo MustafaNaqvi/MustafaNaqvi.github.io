@@ -7,38 +7,48 @@ const featuredProjects = [
         title: 'Coin Crusade',
         desc: 'Strategy game with real-time multiplayer. Custom Node.js game server handling 40+ concurrent players at <120ms latency.',
         tags: ['Unity', 'Node.js', 'WebSocket', 'Multiplayer'],
-        link: 'https://coincrusade.chainwars.io/',
+        youtubeId: 'QDuRhT3wYvA',
+        channelLink: 'https://www.youtube.com/@ChainWars',
         featured: true,
+        clientProject: true,
     },
     {
         icon: '🥋',
         platform: 'Android · 2022',
         title: 'Kung Fu Karate Fighting Arena',
-        desc: 'Action fighting game with 8M+ downloads. Implemented combat systems and character controllers. Increased player engagement by 15% through gameplay optimizations.',
+        desc: 'Action fighting game with 10M+ downloads. Implemented combat systems and character controllers. Increased player engagement by 15% through gameplay optimizations.',
         tags: ['Unity', 'C#', 'Mobile', 'Combat Systems'],
+        youtubeId: 'NIojFnq7FmY',
         link: 'https://play.google.com/store/apps/details?id=com.gxs.karatefighting.superhero.king.fighting.games',
         featured: true,
     },
     {
-        icon: '🏍️',
-        platform: 'Android · 2022',
-        title: 'Bike Racing: 3D Bike Race Game',
-        desc: 'High-speed racing game with 8M+ downloads. Built with Unity Addressables achieving 20% crash reduction and 15% smaller build size.',
-        tags: ['Unity', 'Addressables', 'Mobile', 'Racing'],
-        link: 'https://play.google.com/store/apps/details?id=com.kn.trafficracer.bikeracegames',
+        icon: '🏰',
+        platform: 'Steam · 2025 (Paused)',
+        title: 'Chain of Command',
+        desc: 'Medieval strategy game evolving from turn-based to real-time combat. Full-stack: Unity frontend, Node.js server with AI-controlled battles over WebSocket, NestJS + MongoDB API. Real-time multiplayer was the end goal.',
+        tags: ['Unity', 'NestJS', 'MongoDB', 'Node.js', 'WebSocket', 'AI'],
+        youtubeId: 'DSNfKVyialg',
+        channelLink: 'https://www.youtube.com/@PlayCoCGame',
+        socialLinks: {
+            twitter: 'https://x.com/PlayCoCGame',
+            reddit: 'https://www.reddit.com/user/ChainOfCommandGame/',
+        },
         featured: true,
+        clientProject: true,
     },
 ]
 
 const shippedGames = [
+    { icon: '🏍️', title: 'Bike Racing: 3D Bike Race Game', stats: '10M+ · Racing', link: 'https://play.google.com/store/apps/details?id=com.kn.trafficracer.bikeracegames' },
     { icon: '🏎️', title: 'Mini Car Racing Game Legends', stats: 'Racing', link: 'https://play.google.com/store/apps/details?id=com.ht.mini.car.raceway.endless.drive' },
     { icon: '⚔️', title: 'Sword Shadow Fight: Ninja Game', stats: 'Combat Action', link: 'https://play.google.com/store/apps/details?id=com.knights.shadowfightbattle.war' },
     { icon: '⚖️', title: 'Judgement Day', stats: 'iOS Story', link: 'https://apps.apple.com/us/app/judgement-day/id1580736178' },
-    { icon: '💔', title: 'Lost Love', stats: 'Narrative', link: 'https://apps.apple.com/us/app/lost-love/id1549584034' },
+    { icon: '💔', title: 'Lost Love', stats: 'Narrative', link: 'https://play.google.com/store/apps/details?id=com.AfternoonAppsInc.LostLove' },
     { icon: '🚪', title: 'Trapped Within!', stats: 'Puzzle', link: 'https://apps.apple.com/us/app/trapped-within/id1451330509' },
     { icon: '🤺', title: 'Tap Fighters', stats: 'Combat', link: 'https://apps.apple.com/us/app/sword-fighter-fighting-game/id1581108337' },
     { icon: '🏁', title: 'Crazy Car Racing - Car Games', stats: 'Racing', link: 'https://play.google.com/store/apps/details?id=com.fungames.highway.traffic.race' },
-    { icon: '🧙', title: 'Wizard Time', stats: 'Magic Action', link: 'https://apps.apple.com/us/app/wizard-time/id1585524000' },
+    { icon: '🧙', title: 'Wizard Time', stats: 'Magic Action', link: 'https://play.google.com/store/apps/details?id=com.AfternoonAppsInc.MatchTheMark' },
     { icon: '🚙', title: 'Real Car Race 3D Games Offline', stats: 'Racing', link: 'https://play.google.com/store/apps/details?id=com.gamexis.racing.ferocity.apps' },
     { icon: '🚴', title: 'BMX Bicycle Flip Racing & Flip BMX Bike Game', stats: 'Physics Stunts', link: 'https://play.google.com/store/apps/details?id=com.rebellion.fliprush.bikeflip.bmxflip' },
     { icon: '🚗', title: 'Burnout King - Car Drifting Games', stats: 'Racing', link: 'https://play.google.com/store/apps/details?id=com.rebellion.driftmaster.torqueburnout' },
@@ -76,7 +86,7 @@ export default function Projects() {
                 {/* Featured Projects */}
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
                     gap: '24px',
                     marginBottom: '64px',
                 }}>
@@ -85,72 +95,203 @@ export default function Projects() {
                             key={project.title}
                             className="card"
                             style={{
-                                padding: '24px',
-                                cursor: project.link ? 'pointer' : 'default',
+                                padding: '0',
+                                overflow: 'hidden',
                                 borderColor: project.featured ? 'var(--gold)' : project.inProgress ? 'var(--orange)' : undefined,
                                 position: 'relative',
                             }}
-                            onClick={() => project.link && window.open(project.link, '_blank')}
                         >
-                            {/* Badge */}
-                            {(project.featured || project.inProgress) && (
-                                <div style={{
-                                    position: 'absolute',
-                                    top: '12px',
-                                    right: '12px',
-                                    padding: '4px 8px',
-                                    borderRadius: '4px',
-                                    fontSize: '10px',
-                                    fontFamily: 'var(--mono)',
-                                    background: project.featured ? 'rgba(220,220,170,0.1)' : 'rgba(200,120,60,0.1)',
-                                    color: project.featured ? 'var(--gold)' : 'var(--orange)',
-                                    border: `1px solid ${project.featured ? 'var(--gold)' : 'var(--orange)'}`,
-                                }}>
-                                    {project.featured ? '★ Featured' : '⏳ In Progress'}
-                                </div>
-                            )}
-
-                            {/* Icon & Platform */}
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                                <span style={{ fontSize: '32px' }}>{project.icon}</span>
-                                <span style={{
-                                    fontFamily: 'var(--mono)',
-                                    fontSize: '11px',
-                                    color: 'var(--tm)',
-                                    letterSpacing: '1px',
-                                }}>
-                                    {project.platform}
-                                </span>
+                            {/* Media Section - Video or Image */}
+                            <div style={{
+                                position: 'relative',
+                                width: '100%',
+                                paddingTop: '56.25%', // 16:9 aspect ratio
+                                background: 'var(--bg)',
+                                overflow: 'hidden',
+                            }}>
+                                {project.youtubeId ? (
+                                    <iframe
+                                        src={`https://www.youtube.com/embed/${project.youtubeId}?rel=0&modestbranding=1`}
+                                        title={project.title}
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                        style={{
+                                            position: 'absolute',
+                                            top: 0,
+                                            left: 0,
+                                            width: '100%',
+                                            height: '100%',
+                                            border: 'none',
+                                        }}
+                                    />
+                                ) : project.image ? (
+                                    <img
+                                        src={project.image}
+                                        alt={project.title}
+                                        style={{
+                                            position: 'absolute',
+                                            top: 0,
+                                            left: 0,
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'cover',
+                                        }}
+                                    />
+                                ) : (
+                                    <div style={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: 0,
+                                        width: '100%',
+                                        height: '100%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        fontSize: '64px',
+                                        background: 'linear-gradient(135deg, var(--p) 0%, var(--bg) 100%)',
+                                    }}>
+                                        {project.icon}
+                                    </div>
+                                )}
                             </div>
 
-                            {/* Title & Description */}
-                            <h3 style={{ fontSize: '18px', fontWeight: 600, color: '#fff', marginBottom: '8px' }}>
-                                {project.title}
-                            </h3>
-                            <p style={{ fontSize: '14px', color: 'var(--td)', lineHeight: 1.7, marginBottom: '16px' }}>
-                                {project.desc}
-                            </p>
+                            {/* Content Section */}
+                            <div style={{ padding: '20px' }}>
+                                {/* Badge */}
+                                {project.clientProject && (
+                                    <div style={{
+                                        display: 'inline-block',
+                                        padding: '4px 8px',
+                                        borderRadius: '4px',
+                                        fontSize: '10px',
+                                        fontFamily: 'var(--mono)',
+                                        background: 'rgba(200,120,60,0.1)',
+                                        color: 'var(--orange)',
+                                        border: '1px solid var(--orange)',
+                                        marginBottom: '12px',
+                                    }}>
+                                        🔒 Client Project
+                                    </div>
+                                )}
 
-                            {/* Tags */}
-                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                                {project.tags.map((tag) => (
-                                    <span key={tag} className="tag" style={{ fontSize: '11px' }}>{tag}</span>
-                                ))}
-                            </div>
-
-                            {/* Link indicator */}
-                            {project.link && (
-                                <div style={{
-                                    marginTop: '16px',
-                                    fontSize: '13px',
-                                    color: 'var(--blue)',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '6px',
-                                }}>
-                                    View Project →
+                                {/* Icon & Platform */}
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+                                    <span style={{ fontSize: '24px' }}>{project.icon}</span>
+                                    <span style={{
+                                        fontFamily: 'var(--mono)',
+                                        fontSize: '11px',
+                                        color: 'var(--tm)',
+                                        letterSpacing: '1px',
+                                    }}>
+                                        {project.platform}
+                                    </span>
+                                    {project.featured && (
+                                        <span style={{
+                                            marginLeft: 'auto',
+                                            padding: '3px 8px',
+                                            borderRadius: '4px',
+                                            fontSize: '10px',
+                                            fontFamily: 'var(--mono)',
+                                            background: 'rgba(220,220,170,0.1)',
+                                            color: 'var(--gold)',
+                                            border: '1px solid var(--gold)',
+                                        }}>
+                                            ★ Featured
+                                        </span>
+                                    )}
                                 </div>
-                            )}
+
+                                {/* Title & Description */}
+                                <h3 style={{ fontSize: '18px', fontWeight: 600, color: '#fff', marginBottom: '8px' }}>
+                                    {project.title}
+                                </h3>
+                                <p style={{ fontSize: '14px', color: 'var(--td)', lineHeight: 1.7, marginBottom: '16px' }}>
+                                    {project.desc}
+                                </p>
+
+                                {/* Tags */}
+                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '16px' }}>
+                                    {project.tags.map((tag) => (
+                                        <span key={tag} className="tag" style={{ fontSize: '11px' }}>{tag}</span>
+                                    ))}
+                                </div>
+
+                                {/* Links */}
+                                <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                                    {project.link && (
+                                        <a
+                                            href={project.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={(e) => e.stopPropagation()}
+                                            style={{
+                                                fontSize: '13px',
+                                                color: 'var(--blue)',
+                                                textDecoration: 'none',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '6px',
+                                            }}
+                                        >
+                                            View on Store →
+                                        </a>
+                                    )}
+                                    {project.channelLink && (
+                                        <a
+                                            href={project.channelLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={(e) => e.stopPropagation()}
+                                            style={{
+                                                fontSize: '13px',
+                                                color: '#ff0000',
+                                                textDecoration: 'none',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '6px',
+                                            }}
+                                        >
+                                            YouTube →
+                                        </a>
+                                    )}
+                                    {project.socialLinks?.twitter && (
+                                        <a
+                                            href={project.socialLinks.twitter}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={(e) => e.stopPropagation()}
+                                            style={{
+                                                fontSize: '13px',
+                                                color: 'var(--tm)',
+                                                textDecoration: 'none',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                gap: '6px',
+                                            }}
+                                        >
+                                            𝕏 →
+                                        </a>
+                                    )}
+                                    {project.socialLinks?.reddit && (
+                                        <a
+                                            href={project.socialLinks.reddit}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={(e) => e.stopPropagation()}
+                                            style={{
+                                                fontSize: '13px',
+                                                color: '#ff4500',
+                                                textDecoration: 'none',
+                                                display: 'flex',
+                                                 alignItems: 'center',
+                                                gap: '6px',
+                                            }}
+                                        >
+                                            Reddit →
+                                        </a>
+                                    )}
+                                </div>
+                            </div>
                         </div>
                     ))}
                 </div>

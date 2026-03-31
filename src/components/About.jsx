@@ -1,7 +1,7 @@
 export default function About() {
   const skills = [
     { category: 'Languages', items: ['C#', 'JavaScript', 'TypeScript'] },
-    { category: 'Game Dev', items: ['Unity', 'Photon PUN/Fusion', 'Mirror', 'WebSocket', 'UDP/TCP'] },
+    { category: 'Game Dev', items: ['Unity', 'WebSocket', 'UDP/TCP', 'Socket.IO'] },
     { category: 'Backend', items: ['Node.js', 'NestJS', 'Express', 'REST API'] },
     { category: 'Database', items: ['MongoDB', 'PostgreSQL', 'Redis', 'Firebase'] },
     { category: 'DevOps', items: ['Docker', 'AWS', 'CI/CD', 'Git', 'Linux'] },
@@ -37,8 +37,8 @@ export default function About() {
             </h3>
             <div style={{ color: 'var(--td)', lineHeight: 1.8, fontSize: '15px' }}>
               <p style={{ marginBottom: '16px' }}>
-                I'm a <span style={{ color: 'var(--blue)' }}>Game Developer</span> and{' '}
-                <span style={{ color: 'var(--blue)' }}>Backend Engineer</span> with 6+ years of experience 
+                I'm a <span style={{ color: 'var(--green-bright)' }}>Game Developer</span> and{' '}
+                <span style={{ color: 'var(--green-bright)' }}>Backend Engineer</span> with 6+ years of experience 
                 building real-time multiplayer games and scalable server architectures.
               </p>
               <p style={{ marginBottom: '16px' }}>
@@ -92,7 +92,7 @@ export default function About() {
         }}>
           {[
             { icon: '🎮', title: 'Game Development', desc: 'Unity, C#, Multiplayer' },
-            { icon: '⚡', title: 'Real-time Systems', desc: 'Photon, WebSocket, Mirror' },
+            { icon: '⚡', title: 'Real-time Systems', desc: 'Custom Sockets, WebSocket' },
             { icon: '🔧', title: 'Backend Engineering', desc: 'NestJS, Node.js, APIs' },
             { icon: '📊', title: 'Database Design', desc: 'MongoDB, PostgreSQL, Redis' },
           ].map((item) => (

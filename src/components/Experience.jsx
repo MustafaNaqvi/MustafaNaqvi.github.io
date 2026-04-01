@@ -2,7 +2,7 @@ const experiences = [
   {
     period: '2024 — Present',
     company: 'KryptoHive (K-Hive)',
-    role: 'Game Developer — Multiplayer & Backend',
+    role: 'Game Engineer — Multiplayer & Backend',
     description: 'Leading development of multiplayer game systems and backend architecture. Building real-time game servers and production APIs.',
     highlights: ['Multiplayer Systems', 'NestJS Backend', 'Real-time Sync'],
     current: true,

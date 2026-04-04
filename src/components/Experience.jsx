@@ -12,14 +12,14 @@
     location: 'Islamabad, Pakistan',
     role: 'Unity Developer',
     period: '2023 - 2024',
-    desc: 'Remote contract work on various Unity mobile projects.',
+    desc: 'Shipped multiple mobile games including Kung Fu Fighting Arena (10M+ downloads) and Bike Racing 3D (10M+ downloads). Combat systems, racing mechanics, mobile optimization.',
   },
   {
     company: 'Afternoon Apps',
     location: 'Mississauga, ON, Canada (Remote)',
     role: 'Game Developer',
     period: '2021 - 2023',
-    desc: 'Shipped multiple mobile games including Kung Fu Fighting Arena (10M+ downloads) and Bike Racing 3D (10M+ downloads). Combat systems, racing mechanics, mobile optimization.',
+    desc: 'Shipped three titles (Judgement Day, Lost Love, Sword Fighter). Set up Jenkins CI/CD pipelines cutting build time by 30%. Resolved critical Play Store suspension within 2 weeks.',
   },
   {
     company: 'COMSATS Software Solutions',

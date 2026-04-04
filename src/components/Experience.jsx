@@ -26,7 +26,7 @@
     location: 'Islamabad, Pakistan',
     role: 'Game Developer',
     period: '2020 - 2021',
-    desc: 'Taught programming fundamentals while completing my degree.',
+    desc: 'Firebase Analytics integration, Facebook SDK for social features, and managed Google Play Console releases across multiple titles.',
   },
   {
     company: 'Kay2Tech',
@@ -53,6 +53,7 @@ export default function Experience() {
           {jobs.map((job, i) => (
             <div 
               key={job.company}
+              className="experience-grid"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'minmax(140px, 180px) 1fr',
@@ -131,6 +132,45 @@ export default function Experience() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Education */}
+        <div style={{ 
+          marginTop: '48px', 
+          paddingTop: '48px', 
+          borderTop: '1px solid var(--border)',
+        }}>
+          <h3 style={{ 
+            fontSize: '14px', 
+            fontWeight: 500, 
+            color: 'var(--text-muted)', 
+            marginBottom: '16px',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em',
+          }}>
+            Education
+          </h3>
+          <div className="experience-grid" style={{
+            display: 'grid',
+            gridTemplateColumns: 'minmax(140px, 180px) 1fr',
+            gap: '32px',
+          }}>
+            <span style={{
+              fontSize: '14px',
+              color: 'var(--text-muted)',
+              fontFamily: 'var(--mono)',
+            }}>
+              2015 - 2019
+            </span>
+            <div>
+              <h3 style={{ fontSize: '18px', fontWeight: 600, marginBottom: '4px' }}>
+                BSc Computer Science
+              </h3>
+              <p style={{ fontSize: '15px', color: 'var(--accent)' }}>
+                COMSATS University, Islamabad
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

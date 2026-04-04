@@ -34,7 +34,7 @@ export default function Contact() {
   return (
     <section id="contact" style={{ padding: '120px 0' }}>
       <div className="container">
-        <div style={{
+        <div className="contact-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
           gap: '60px',

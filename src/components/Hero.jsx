@@ -5,6 +5,7 @@
       display: 'flex',
       alignItems: 'center',
       paddingTop: '80px',
+      position: 'relative',
     }}>
       <div className="container">
         <div style={{
@@ -17,7 +18,7 @@
             <img 
               src="/photo.jpg" 
               alt="Mustafa Naqvi"
-              className="photo"
+              className="photo hero-photo"
               style={{
                 width: '140px',
                 height: '140px',
@@ -25,7 +26,7 @@
                 flexShrink: 0,
               }}
             />
-            <div style={{ flex: 1, minWidth: '280px' }}>
+            <div style={{ flex: 1, minWidth: '200px' }}>
               <div style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -73,22 +74,22 @@
             </p>
             
             {/* Key stats */}
-            <div style={{
+            <div className="stats-row" style={{
               display: 'flex',
               gap: '40px',
               marginBottom: '40px',
               flexWrap: 'wrap',
             }}>
               <div>
-                <div style={{ fontSize: '28px', fontWeight: 700, color: 'var(--accent)' }}>20+</div>
+                <div className="stat-number" style={{ fontSize: '28px', fontWeight: 700, color: 'var(--accent)' }}>20+</div>
                 <div style={{ fontSize: '14px', color: 'var(--text-muted)' }}>shipped games</div>
               </div>
               <div>
-                <div style={{ fontSize: '28px', fontWeight: 700, color: 'var(--text)' }}>100M+</div>
+                <div className="stat-number" style={{ fontSize: '28px', fontWeight: 700, color: 'var(--text)' }}>100M+</div>
                 <div style={{ fontSize: '14px', color: 'var(--text-muted)' }}>combined downloads</div>
               </div>
               <div>
-                <div style={{ fontSize: '28px', fontWeight: 700, color: 'var(--text)' }}>6+</div>
+                <div className="stat-number" style={{ fontSize: '28px', fontWeight: 700, color: 'var(--text)' }}>6+</div>
                 <div style={{ fontSize: '14px', color: 'var(--text-muted)' }}>years building</div>
               </div>
             </div>
@@ -111,6 +112,25 @@
               </a>
             </div>
           </div>
+        </div>
+        
+        {/* Scroll indicator */}
+        <div className="scroll-indicator" style={{
+          position: 'absolute',
+          bottom: '40px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '8px',
+          opacity: 0.5,
+          animation: 'bounce 2s infinite',
+        }}>
+          <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>scroll</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="2">
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
         </div>
       </div>
     </section>

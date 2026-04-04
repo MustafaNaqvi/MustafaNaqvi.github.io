@@ -16,11 +16,9 @@
               lineHeight: 1.8,
               color: 'var(--text-secondary)',
             }}>
-              Games clicked for me in university. While other CS students were 
-              grinding competitive programming, I was figuring out how to make 
-              a character feel good to control, how to keep players in a flow 
-              state, why some games get uninstalled after 5 minutes and others 
-              get 1000 hours.
+              Been playing games my whole life. First time I built one in 
+              university, it made more sense to me than anything else in CS. 
+              Never looked back.
             </p>
             
             <p style={{
@@ -30,7 +28,7 @@
             }}>
               Six years in, I've shipped 20+ titles across Unity and 
               web tech. Mobile games with millions of downloads. PC titles with 
-              real-time multiplayer. Projects where I wrote Solidity contracts 
+              real-time multiplayer. Projects where I wrote solidity contracts 
               for blockchain integration. I don't just "do the Unity part".
               I can build the backend, set up the infrastructure, and make sure 
               the whole thing actually works when you ship it.

@@ -34,7 +34,7 @@ const featured = [
     links: {
       youtube: 'https://www.youtube.com/@ChainofCommandGame',
       reddit: 'https://www.reddit.com/r/ChainofCommand/',
-      twitter: 'https://x.com/ChainOfCommGame',
+      twitter: 'https://x.com/PlayCoCGame',
     },
   },
 ]

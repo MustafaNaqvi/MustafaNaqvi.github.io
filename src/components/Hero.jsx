@@ -8,7 +8,7 @@
       position: 'relative',
     }}>
       <div className="container">
-        <div style={{
+        <div className="hero-content" style={{
           display: 'flex',
           flexDirection: 'column',
           gap: '32px',
@@ -82,20 +82,20 @@
             }}>
               <div>
                 <div className="stat-number" style={{ fontSize: '28px', fontWeight: 700, color: 'var(--accent)' }}>20+</div>
-                <div style={{ fontSize: '14px', color: 'var(--text-muted)' }}>shipped games</div>
+                <div className="stat-label" style={{ fontSize: '14px', color: 'var(--text-muted)' }}>shipped games</div>
               </div>
               <div>
                 <div className="stat-number" style={{ fontSize: '28px', fontWeight: 700, color: 'var(--text)' }}>100M+</div>
-                <div style={{ fontSize: '14px', color: 'var(--text-muted)' }}>combined downloads</div>
+                <div className="stat-label" style={{ fontSize: '14px', color: 'var(--text-muted)' }}>downloads</div>
               </div>
               <div>
                 <div className="stat-number" style={{ fontSize: '28px', fontWeight: 700, color: 'var(--text)' }}>6+</div>
-                <div style={{ fontSize: '14px', color: 'var(--text-muted)' }}>years building</div>
+                <div className="stat-label" style={{ fontSize: '14px', color: 'var(--text-muted)' }}>years</div>
               </div>
             </div>
             
             {/* CTAs */}
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <div className="hero-ctas" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               <a href="#work" className="btn btn-primary">
                 See my work
               </a>
@@ -107,7 +107,7 @@
               >
                 Resume
               </a>
-              <a href="#contact" className="btn btn-secondary">
+              <a href="#contact" className="btn btn-secondary hide-mobile-sm">
                 Get in touch
               </a>
             </div>

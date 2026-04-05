@@ -118,6 +118,13 @@ img { max-width: 100%; display: block; }
   60% { transform: translateX(-50%) translateY(-4px); }
 }
 
+/* Tablet landscape / small desktop (1024px and below) */
+@media (max-width: 1024px) {
+  .container { max-width: 100%; }
+  .section { padding: 100px 0; }
+}
+
+/* Tablet portrait (768px and below) */
 @media (max-width: 768px) {
   .container { padding: 0 20px; }
   .section { padding: 80px 0; }
@@ -147,6 +154,7 @@ img { max-width: 100%; display: block; }
   
   /* Contact grid */
   .contact-grid {
+    grid-template-columns: 1fr !important;
     gap: 40px !important;
   }
   
@@ -174,22 +182,165 @@ img { max-width: 100%; display: block; }
   .video-wrapper {
     border-radius: 8px;
   }
+  
+  /* Buttons stack on mobile */
+  .btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+  
+  /* Tags wrap nicely */
+  .tag {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
 }
 
+/* Large phones (iPhone Pro Max, Samsung S series) (480px and below) */
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
+  .section { padding: 60px 0; }
   
   /* Smaller photo */
+  .hero-photo {
+    width: 90px !important;
+    height: 90px !important;
+  }
+  
+  .stats-row {
+    gap: 16px !important;
+    justify-content: space-between !important;
+  }
+  
+  .stat-number {
+    font-size: 22px !important;
+  }
+  
+  .stat-label {
+    font-size: 12px !important;
+  }
+  
+  /* Section titles smaller */
+  .section-title {
+    font-size: 22px !important;
+  }
+  
+  /* Form inputs full width */
+  .contact-grid input,
+  .contact-grid textarea {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+  }
+  
+  /* Scroll indicator - smaller and lower on mobile */
+  .scroll-indicator {
+    bottom: 16px !important;
+    transform: translateX(-50%) scale(0.85) !important;
+  }
+  
+  /* Add padding to hero so content doesn't overlap scroll indicator */
+  .hero-content {
+    padding-bottom: 80px !important;
+  }
+}
+
+/* Small phones (iPhone SE, older devices) (375px and below) */
+@media (max-width: 375px) {
+  .container { padding: 0 14px; }
+  .section { padding: 50px 0; }
+  
   .hero-photo {
     width: 80px !important;
     height: 80px !important;
   }
   
   .stats-row {
-    gap: 20px !important;
+    gap: 12px !important;
+    flex-wrap: wrap !important;
   }
   
   .stat-number {
-    font-size: 22px !important;
+    font-size: 20px !important;
+  }
+  
+  .section-title {
+    font-size: 20px !important;
+  }
+  
+  /* Smaller buttons */
+  .btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+  
+  /* Tags even smaller */
+  .tag {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+}
+
+/* Samsung Galaxy S8/S9, Pixel, many Android devices (360px and below) */
+@media (max-width: 360px) {
+  .container { padding: 0 12px; }
+  .section { padding: 45px 0; }
+  
+  .hero-photo {
+    width: 75px !important;
+    height: 75px !important;
+  }
+  
+  .stat-number {
+    font-size: 18px !important;
+  }
+  
+  .stat-label {
+    font-size: 11px !important;
+  }
+  
+  .section-title {
+    font-size: 19px !important;
+  }
+  
+  /* Tighter buttons */
+  .btn {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+  
+  /* Games grid items tighter */
+  .games-grid {
+    gap: 8px !important;
+  }
+}
+
+/* Very small screens (320px - old iPhone 5 size) */
+@media (max-width: 320px) {
+  .container { padding: 0 12px; }
+  
+  .hero-photo {
+    width: 70px !important;
+    height: 70px !important;
+  }
+  
+  .stat-number {
+    font-size: 18px !important;
+  }
+  
+  .section-title {
+    font-size: 18px !important;
+  }
+}
+
+/* Hide third CTA on small phones */
+@media (max-width: 400px) {
+  .hide-mobile-sm { display: none !important; }
+  
+  .hero-ctas {
+    width: 100%;
+  }
+  
+  .hero-ctas .btn {
+    flex: 1;
+    justify-content: center;
   }
 }

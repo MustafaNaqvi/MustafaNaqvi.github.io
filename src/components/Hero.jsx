@@ -115,23 +115,31 @@
         </div>
         
         {/* Scroll indicator */}
-        <div className="scroll-indicator" style={{
-          position: 'absolute',
-          bottom: '40px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '8px',
-          opacity: 0.5,
-          animation: 'bounce 2s infinite',
-        }}>
+        <a 
+          href="#work" 
+          className="scroll-indicator" 
+          style={{
+            position: 'absolute',
+            bottom: '40px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '8px',
+            opacity: 0.5,
+            animation: 'bounce 2s infinite',
+            cursor: 'pointer',
+            transition: 'opacity 0.2s',
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+          onMouseLeave={(e) => e.currentTarget.style.opacity = '0.5'}
+        >
           <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>scroll</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="2">
             <path d="M12 5v14M5 12l7 7 7-7" />
           </svg>
-        </div>
+        </a>
       </div>
     </section>
   )

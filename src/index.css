@@ -31,6 +31,25 @@ body {
   font-size: 16px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  cursor: default;
+  /* Hide the blinking caret when clicking on text */
+  caret-color: transparent;
+}
+
+/* Text elements - selectable but with default cursor */
+p, span, h1, h2, h3, h4, h5, h6, li, div {
+  cursor: default;
+}
+
+/* Allow text selection and proper cursor on input elements */
+input, textarea, [contenteditable="true"] {
+  cursor: text;
+  caret-color: var(--text);
+}
+
+/* Pointer cursor for interactive elements */
+a, button, [role="button"] {
+  cursor: pointer;
 }
 
 ::selection { background: var(--accent); color: var(--bg); }

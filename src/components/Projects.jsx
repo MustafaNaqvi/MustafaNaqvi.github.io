@@ -10,7 +10,7 @@ const featured = [
     video: 'QDuRhT3wYvA',
     highlight: 'Web3',
     links: {
-      youtube: 'https://www.youtube.com/@CoinCrusadeGame',
+      youtube: 'https://www.youtube.com/channel/UCzflPF4RF7GyIaJvNiOnFNA',
     },
   },
   {

@@ -119,6 +119,23 @@ img { max-width: 100%; display: block; }
 }
 .photo:hover { border-color: var(--accent); }
 
+.hero-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 64px;
+}
+
+.hero-photo-wrap { flex-shrink: 0; }
+
+.hero-photo {
+  width: 225px;
+  height: 300px;
+  object-fit: scale-down;
+  object-position: top;
+}
+
+.hero-text { flex: 1; }
+
 .status-dot {
   width: 8px; height: 8px;
   background: var(--success);
@@ -148,16 +165,19 @@ img { max-width: 100%; display: block; }
   .container { padding: 0 20px; }
   .section { padding: 80px 0; }
   .hide-mobile { display: none !important; }
-  
+
   /* Navigation - hamburger menu */
   .nav-desktop { display: none !important; }
   .nav-hamburger { display: block !important; }
   .nav-mobile { display: flex !important; }
-  
-  /* Hero mobile */
-  .hero-photo { 
-    width: 100px !important; 
-    height: 100px !important; 
+
+  /* Hero: slightly smaller photo, still side-by-side */
+  .hero-layout { gap: 40px; }
+  .hero-photo {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    object-position: top;
   }
   
   /* Stats mobile */
@@ -215,15 +235,28 @@ img { max-width: 100%; display: block; }
   }
 }
 
+/* Stack hero layout on narrow screens */
+@media (max-width: 640px) {
+  .hero-layout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .hero-photo {
+    width: 160px;
+    height: 160px;
+  }
+}
+
 /* Large phones (iPhone Pro Max, Samsung S series) (480px and below) */
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
   .section { padding: 60px 0; }
-  
-  /* Smaller photo */
+
   .hero-photo {
-    width: 90px !important;
-    height: 90px !important;
+    width: 140px;
+    height: 140px;
   }
   
   .stats-row {
@@ -266,10 +299,10 @@ img { max-width: 100%; display: block; }
 @media (max-width: 375px) {
   .container { padding: 0 14px; }
   .section { padding: 50px 0; }
-  
+
   .hero-photo {
-    width: 80px !important;
-    height: 80px !important;
+    width: 120px;
+    height: 120px;
   }
   
   .stats-row {
@@ -302,10 +335,10 @@ img { max-width: 100%; display: block; }
 @media (max-width: 360px) {
   .container { padding: 0 12px; }
   .section { padding: 45px 0; }
-  
+
   .hero-photo {
-    width: 75px !important;
-    height: 75px !important;
+    width: 110px;
+    height: 110px;
   }
   
   .stat-number {
@@ -335,10 +368,10 @@ img { max-width: 100%; display: block; }
 /* Very small screens (320px - old iPhone 5 size) */
 @media (max-width: 320px) {
   .container { padding: 0 12px; }
-  
+
   .hero-photo {
-    width: 70px !important;
-    height: 70px !important;
+    width: 100px;
+    height: 100px;
   }
   
   .stat-number {

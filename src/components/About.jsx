@@ -26,12 +26,12 @@
               lineHeight: 1.8,
               color: 'var(--text-secondary)',
             }}>
-              Six years in, I've shipped 20+ titles across Unity and 
-              web tech. Mobile games with millions of downloads. PC titles with 
-              real-time multiplayer. Projects where I wrote solidity contracts 
-              for blockchain integration. I don't just "do the Unity part".
-              I can build the backend, set up the infrastructure, and make sure 
-              the whole thing actually works when you ship it.
+              The thing that changed how I think about game dev was multiplayer.
+              Single-player, you can fake a lot of things right up until launch.
+              Multiplayer exposes every bad assumption immediately — wrong authority
+              model, sloppy state sync, one slow query when a match resolves.
+              Building the server for Chain of Command from scratch — game loop,
+              state sync, player sessions — is where that clicked for me.
             </p>
             
             <p style={{

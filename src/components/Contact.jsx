@@ -51,9 +51,8 @@ export default function Contact() {
               color: 'var(--text-secondary)',
               marginBottom: '40px',
             }}>
-              Whether it's a game project, full stack work, or something
-              involving blockchain - I'm always interested in hearing about
-              new challenges.
+              If you have a game project that needs a developer who can
+              own the full stack — Unity, backend, infra — drop me a line.
             </p>
 
             {/* Contact info cards */}

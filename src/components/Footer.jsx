@@ -12,7 +12,7 @@
         gap: '16px',
       }}>
         <p style={{ fontSize: '14px', color: 'var(--text-muted)' }}>
-          © {new Date().getFullYear()}
+          © {new Date().getFullYear()} Mustafa Naqvi
         </p>
         <div style={{ display: 'flex', gap: '20px' }}>
           <a href="https://github.com/MustafaNaqvi" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', color: 'var(--text-muted)' }}>GitHub</a>

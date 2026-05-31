@@ -1,6 +1,20 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 
 const featured = [
+  {
+    title: 'Chain of Command',
+    year: '2025',
+    client: 'Client Project',
+    desc: 'Medieval strategy game. Turn-based evolving into real-time combat. I built the full stack: Unity game client, Node.js backend with AI-controlled battles, NestJS API with MongoDB. Real-time multiplayer was the end goal.',
+    tech: ['Unity', 'NestJS', 'MongoDB', 'Node.js'],
+    video: 'DSNfKVyialg',
+    note: 'Currently paused',
+    links: {
+      youtube: 'https://www.youtube.com/@ChainofCommandGame',
+      reddit: 'https://www.reddit.com/r/ChainofCommand/',
+      twitter: 'https://x.com/PlayCoCGame',
+    },
+  },
   {
     title: 'Coin Crusade',
     year: '2024',
@@ -23,23 +37,10 @@ const featured = [
     link: 'https://play.google.com/store/apps/details?id=com.gxs.karatefighting.superhero.king.fighting.games',
     downloads: '10M+',
   },
-  {
-    title: 'Chain of Command',
-    year: '2025',
-    client: 'Client Project',
-    desc: 'Medieval strategy game. Turn-based evolving into real-time combat. I built the full stack: Unity game client, Node.js backend with AI-controlled battles, NestJS API with MongoDB. Real-time multiplayer was the end goal.',
-    tech: ['Unity', 'NestJS', 'MongoDB', 'Node.js'],
-    video: 'DSNfKVyialg',
-    note: 'Currently paused',
-    links: {
-      youtube: 'https://www.youtube.com/@ChainofCommandGame',
-      reddit: 'https://www.reddit.com/r/ChainofCommand/',
-      twitter: 'https://x.com/PlayCoCGame',
-    },
-  },
 ]
 
-const otherGames = [
+// Keeping the exact data for Phase 3
+export const otherGames = [
   { name: 'Bike Racing 3D', type: 'Racing', downloads: '10M+', link: 'https://play.google.com/store/apps/details?id=com.kn.trafficracer.bikeracegames', icon: '/games/bike-racing.webp' },
   { name: 'Crazy Car Racing', type: 'Racing', downloads: '100M+', link: 'https://play.google.com/store/apps/details?id=com.fungames.highway.traffic.race', icon: '/games/crazy-car-racing.webp' },
   { name: 'Mini Car Racing Game Legends', type: 'Racing', downloads: '100M+', link: 'https://play.google.com/store/apps/details?id=com.ht.mini.car.raceway.endless.drive', icon: '/games/mini-car-racing-legends.webp' },
@@ -61,242 +62,203 @@ const otherGames = [
   { name: 'Marine Sharpshooter 3D', type: 'Shooter', link: 'https://apps.apple.com/us/app/marine-sharpshooter-3d/id436148268', platform: 'iOS', icon: null },
 ]
 
-// Placeholder icon component
+// Fallback game icon component for titles without an image
 function GameIcon({ name }) {
-  // Generate consistent color from name
   const colors = ['#f59e0b', '#3b82f6', '#22c55e', '#ef4444', '#8b5cf6', '#ec4899', '#06b6d4']
   const colorIndex = name.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % colors.length
   const initial = name.charAt(0).toUpperCase()
 
   return (
-    <div style={{
-      width: '40px',
-      height: '40px',
-      borderRadius: '10px',
-      background: `${colors[colorIndex]}20`,
-      border: `1px solid ${colors[colorIndex]}40`,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontSize: '16px',
-      fontWeight: 600,
-      color: colors[colorIndex],
-      flexShrink: 0,
-    }}>
+    <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-bold flex-shrink-0"
+         style={{ backgroundColor: `${colors[colorIndex]}20`, border: `1px solid ${colors[colorIndex]}40`, color: colors[colorIndex] }}>
       {initial}
     </div>
   )
 }
 
-export default function Projects() {
-  const [expanded, setExpanded] = useState(false)
-  const visibleGames = expanded ? otherGames : otherGames.slice(0, 8)
-
+function BentoCell({ game, isWide }) {
+  // Generate a random array of 12 background icons from the pool of available ones for the pattern
+  const patternIcons = otherGames.filter(g => g.icon).sort(() => 0.5 - Math.random()).slice(0, 12).map(g => g.icon);
+  
   return (
-    <section id="work" className="section" style={{ background: 'var(--bg-warm)' }}>
-      <div className="container">
-        <h2 style={{
-          fontSize: 'clamp(28px, 5vw, 36px)',
-          fontWeight: 600,
-          marginBottom: '16px',
-        }}>
-          Work
-        </h2>
-        <p style={{ color: 'var(--text-secondary)', marginBottom: '64px' }}>
-          Client projects and studio work. I see them through to release.
-        </p>
+    <a
+      href={game.link || "#"}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`group relative overflow-hidden bg-zinc-900 border border-white/5 rounded-3xl p-5 flex flex-col justify-between min-h-[160px] transition-all duration-300 hover:border-amber-500/50 hover:shadow-[0_0_30px_rgba(245,158,11,0.1)] ${isWide ? 'md:col-span-2' : 'col-span-1'}`}
+    >
+      {/* Background Icon Pattern (Low Opacity) */}
+      <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500 pointer-events-none grid grid-cols-4 gap-2 p-2" style={{ transform: 'rotate(-5deg) scale(1.2)' }}>
+        {patternIcons.map((iconUrl, i) => (
+          <img key={i} src={iconUrl} alt="" className="w-full aspect-square object-cover rounded-md grayscale" />
+        ))}
+      </div>
+      
+      {/* Dark Gradient Overlay to ensure text readability */}
+      <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 to-transparent pointer-events-none" />
 
-        {/* Featured */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '80px', marginBottom: '100px' }}>
-          {featured.map((project) => (
-            <div key={project.title} className="project-grid" style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-              gap: '32px',
-              alignItems: 'start',
-            }}>
-              <div className="video-wrapper">
-                <iframe
-                  src={"https://www.youtube.com/embed/" + project.video + "?rel=0"}
-                  title={project.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
+      {/* Content Top: Main Game Icon */}
+      <div className="relative z-10">
+        {game.icon ? (
+          <img src={game.icon} alt={game.name} className="w-12 h-12 rounded-xl object-cover shadow-md border border-white/10 group-hover:scale-110 transition-transform duration-300" />
+        ) : (
+          <div className="group-hover:scale-110 transition-transform duration-300 origin-top-left"><GameIcon name={game.name} /></div>
+        )}
+      </div>
 
-              <div>
-                <div style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '12px' }}>
-                  {project.year} / {project.client}
-                </div>
+      {/* Content Bottom: Text & Metrics */}
+      <div className="relative z-10 mt-6">
+        <h4 className="text-white font-bold text-lg leading-tight mb-1 group-hover:text-amber-500 transition-colors">
+          {game.name}
+        </h4>
+        <div className="flex flex-wrap items-center gap-2 text-xs font-medium">
+          <span className="text-zinc-500 uppercase tracking-wider">{game.type}</span>
+          {game.downloads && (
+            <>
+              <span className="w-1 h-1 rounded-full bg-zinc-700"></span>
+              <span className="text-green-500">{game.downloads}</span>
+            </>
+          )}
+          {game.platform && (
+            <>
+              <span className="w-1 h-1 rounded-full bg-zinc-700"></span>
+              <span className="text-amber-500/70">{game.platform}</span>
+            </>
+          )}
+        </div>
+      </div>
+    </a>
+  );
+}
 
-                <h3 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '12px' }}>
-                  {project.title}
-                  {project.note && (
-                    <span style={{
-                      fontSize: '11px',
-                      fontWeight: 500,
-                      padding: '4px 10px',
-                      background: 'var(--surface)',
-                      color: 'var(--text-muted)',
-                      borderRadius: '4px',
-                      marginLeft: '12px',
-                      verticalAlign: 'middle',
-                    }}>
-                      {project.note}
-                    </span>
-                  )}
-                  {project.highlight && (
-                    <span style={{
-                      fontSize: '11px',
-                      fontWeight: 600,
-                      padding: '4px 10px',
-                      background: 'var(--accent-dim)',
-                      color: 'var(--accent)',
-                      borderRadius: '4px',
-                      marginLeft: '12px',
-                      verticalAlign: 'middle',
-                    }}>
-                      {project.highlight}
-                    </span>
-                  )}
-                  {project.downloads && (
-                    <span style={{
-                      fontSize: '11px',
-                      fontWeight: 500,
-                      padding: '4px 10px',
-                      background: 'rgba(34, 197, 94, 0.1)',
-                      color: '#22c55e',
-                      borderRadius: '4px',
-                      marginLeft: '12px',
-                      verticalAlign: 'middle',
-                    }}>
-                      {project.downloads}
-                    </span>
-                  )}
-                </h3>
-
-                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '20px' }}>
-                  {project.desc}
-                </p>
-
-                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
-                  {project.tech.map(t => <span key={t} className="tag">{t}</span>)}
-                </div>
-
-                {/* Links row */}
-                <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
-                  {project.link && (
-                    <a href={project.link} target="_blank" rel="noopener noreferrer"
-                      style={{ fontSize: '14px', color: 'var(--accent)' }}>
-                      Play Store
-                    </a>
-                  )}
-                  {project.links?.youtube && (
-                    <a href={project.links.youtube} target="_blank" rel="noopener noreferrer"
-                      style={{ fontSize: '14px', color: '#FF0000', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                      </svg>
-                      YouTube
-                    </a>
-                  )}
-                  {project.links?.reddit && (
-                    <a href={project.links.reddit} target="_blank" rel="noopener noreferrer"
-                      style={{ fontSize: '14px', color: '#FF4500', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z" />
-                      </svg>
-                      Reddit
-                    </a>
-                  )}
-                  {project.links?.twitter && (
-                    <a href={project.links.twitter} target="_blank" rel="noopener noreferrer"
-                      style={{ fontSize: '14px', color: '#fff', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                      </svg>
-                      X
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
+export default function Projects() {
+  return (
+    <section id="work" className="py-24 bg-[#09090B]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Featured Work</h2>
+          <p className="text-zinc-400 text-lg">Client projects and studio work. I see them through to release.</p>
         </div>
 
-        {/* Other Games */}
-        <div style={{ background: 'var(--surface)', borderRadius: '16px', border: '1px solid var(--border)', padding: '32px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '24px', flexWrap: 'wrap', gap: '16px' }}>
-            <div>
-              <h3 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '6px' }}>
-                {otherGames.length} more shipped titles
-              </h3>
-              <p style={{ fontSize: '14px', color: 'var(--text-muted)' }}>
-                100M+ combined downloads across all projects
-              </p>
-            </div>
-            {!expanded && (
-              <span style={{
-                fontSize: '13px',
-                color: 'var(--accent)',
-                fontWeight: 500,
-              }}>
-                Showing 8 of {otherGames.length}
-              </span>
-            )}
-          </div>
+        {/* Phase 2: Asymmetrical Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-24">
+          {featured.map((project, index) => {
+            const isFeatured = index === 0;
 
-          <div className="games-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '12px', marginBottom: '24px' }}>
-            {visibleGames.map(game => (
-              <a key={game.name} href={game.link} target="_blank" rel="noopener noreferrer"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '14px',
-                  padding: '14px 16px',
-                  background: 'var(--bg)',
-                  borderRadius: '10px',
-                  border: '1px solid var(--border)',
-                  textDecoration: 'none',
-                  transition: 'border-color 0.2s',
-                }}
-                onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--accent)'}
-                onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}
+            return (
+              <div
+                key={project.title}
+                className={`bg-zinc-900 border border-white/10 rounded-2xl p-6 lg:p-8 flex flex-col ${
+                  isFeatured ? 'lg:col-span-2 lg:flex-row' : ''
+                } gap-6 lg:gap-8 hover:border-amber-500/30 transition-colors`}
               >
-                {/* Icon placeholder - replace with actual game icon */}
-                {game.icon ? (
-                  <img src={game.icon} alt={game.name} style={{ width: '40px', height: '40px', borderRadius: '10px', objectFit: 'cover' }} />
-                ) : (
-                  <GameIcon name={game.name} />
-                )}
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: '14px', fontWeight: 500, color: 'var(--text)', marginBottom: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                    {game.name}
-                  </div>
-                  <div style={{ fontSize: '12px', color: 'var(--text-muted)' }}>
-                    {game.type}
-                    {game.downloads && <span style={{ color: '#22c55e', marginLeft: '8px' }}>{game.downloads}</span>}
-                    {game.platform && <span style={{ color: 'var(--accent)', marginLeft: '8px' }}>{game.platform}</span>}
+                {/* Video Embed */}
+                <div className={`w-full ${isFeatured ? 'lg:w-1/2 flex-shrink-0' : ''}`}>
+                  <div className="aspect-video w-full rounded-xl overflow-hidden border border-white/5 bg-black shadow-lg">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${project.video}?rel=0`}
+                      title={project.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="w-full h-full"
+                    />
                   </div>
                 </div>
-              </a>
-            ))}
+
+                {/* Text Content */}
+                <div className={`flex flex-col flex-1 ${isFeatured ? 'justify-center' : ''}`}>
+                  <div className="text-xs font-semibold text-zinc-500 uppercase tracking-widest mb-3">
+                    {project.year} // {project.client}
+                  </div>
+
+                  <h3 className="text-2xl font-bold text-white mb-3 flex flex-wrap items-center gap-3">
+                    {project.title}
+                    {project.note && (
+                      <span className="text-xs font-semibold px-2.5 py-1 bg-zinc-800 text-zinc-300 rounded-md">
+                        {project.note}
+                      </span>
+                    )}
+                    {project.highlight && (
+                      <span className="text-xs font-semibold px-2.5 py-1 bg-amber-500/10 text-amber-500 rounded-md">
+                        {project.highlight}
+                      </span>
+                    )}
+                    {project.downloads && (
+                      <span className="text-xs font-semibold px-2.5 py-1 bg-green-500/10 text-green-400 rounded-md">
+                        {project.downloads}
+                      </span>
+                    )}
+                  </h3>
+
+                  <p className="text-zinc-400 leading-relaxed mb-6">
+                    {project.desc}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-8 mt-auto">
+                    {project.tech.map((t) => (
+                      <span key={t} className="px-3 py-1 bg-zinc-800/50 border border-white/5 rounded-md text-xs font-medium text-zinc-300">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Links Row */}
+                  <div className="flex flex-wrap items-center gap-5 pt-4 border-t border-white/5">
+                    {project.link && (
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-amber-500 hover:text-amber-400 transition-colors">
+                        Play Store
+                      </a>
+                    )}
+                    {project.links?.youtube && (
+                      <a href={project.links.youtube} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-red-500 hover:text-red-400 transition-colors flex items-center gap-1.5">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                        YouTube
+                      </a>
+                    )}
+                    {project.links?.reddit && (
+                      <a href={project.links.reddit} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-orange-500 hover:text-orange-400 transition-colors flex items-center gap-1.5">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z" />
+                        </svg>
+                        Reddit
+                      </a>
+                    )}
+                    {project.links?.twitter && (
+                      <a href={project.links.twitter} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-zinc-300 hover:text-white transition-colors flex items-center gap-1.5">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                        X
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Phase 3: Project Vault */}
+        <div>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Project Vault</h2>
+              <p className="text-zinc-400">The archive. {otherGames.length} titles that taught me everything.</p>
+            </div>
+            <div className="text-sm font-semibold text-amber-500 bg-amber-500/10 px-3 py-1.5 rounded-lg border border-amber-500/20 whitespace-nowrap">
+              100M+ Combined Downloads
+            </div>
           </div>
 
-          <button onClick={() => setExpanded(!expanded)}
-            style={{
-              width: '100%',
-              padding: '14px',
-              background: expanded ? 'transparent' : 'var(--accent)',
-              color: expanded ? 'var(--text-muted)' : 'var(--bg)',
-              border: expanded ? '1px solid var(--border)' : 'none',
-              borderRadius: '8px',
-              fontSize: '14px',
-              fontWeight: 500,
-              cursor: 'pointer',
-            }}>
-            {expanded ? 'Show less' : 'Show all ' + otherGames.length + ' games'}
-          </button>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {otherGames.map((game, index) => {
+              // Assign the wide rectangle (col-span-2) to specific indices to build the masonry bento look
+              const isWide = [0, 4, 7, 12].includes(index);
+              return <BentoCell key={game.name} game={game} isWide={isWide} />;
+            })}
+          </div>
         </div>
       </div>
     </section>

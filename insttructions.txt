@@ -1,0 +1,50 @@
+**Role:** You are an Elite Staff Frontend Engineer and UI/UX Architect. We are building my developer portfolio from scratch.
+
+**Mission:** Create an ultra-professional, high-converting portfolio that bridges Game Development and Full-Stack Engineering. A technical recruiter or CTO must look at this and instantly recognize a top 1% engineer. We are using a specific, highly-structured Bento Grid architecture with a brand-new "Titanium & Amber" theme.
+
+**CRITICAL LOCKS (DO NOT DEVIATE):**
+
+1. **NO AI TROPES:** No "System.Status", no availability pills, no terminal/hacker UI fonts, and no terminal logs like `// LOG_ENTRY: INITIALIZATION`. Keep the copywriting strictly professional.
+2. **DATA LOCK:** Keep exact metrics: exactly "20+ titles", "100M+ downloads", "6+ years". Do not alter dates, company names, or job titles.
+3. **COPYWRITING LOCK:** Keep my bio, project descriptions, and experience bullet points EXACTLY as written in the source files. Keep ALL YouTube embeds, Github links, and tech stack tags intact.
+
+**Target Aesthetic: "Premium Titanium & Amber"**
+
+* **Vibe:** Sleek, precision-engineered, performant, and grounded. Think top-tier graphics card or pro developer tools.
+* **Colors:** Deep Obsidian Black background (`#09090B`). Dark Gunmetal/Titanium for card backgrounds (`zinc-900` or `white/5`).
+* **Accent:** A single, striking, high-end energetic Amber/Orange (e.g., Tailwind's `amber-500` or `orange-500`) used sparingly only for buttons, active states, and highlighting metrics.
+* **Typography:** A stark, legible sans-serif (`Inter` or `Geist`).
+
+**Strict Responsiveness Rules:**
+The layout must be flawless and professional across all viewports without horizontal scrolling or squashed elements:
+
+* **Small Phones (e.g., iPhone SE, Galaxy S8 - <380px):** Single column strictly. Reduced padding. Text must maintain perfect readability.
+* **Large Phones (e.g., iPhone 17 Pro Max, S25 Ultra):** Single column with generous padding and large touch targets.
+* **Tablets (iPad mini, iPad Pro):** Transition to 2-column grids for projects and stats.
+* **PC/Desktop:** Expansive multi-column grids and elegant hover effects within max-width containers.
+
+**Layout Instructions (Component-by-Component):**
+Do NOT output the whole site at once to prevent truncation. Wait for my "Next" command.
+
+* **Phase 1: Global Setup & Hero.**
+* Set up the Tailwind config with the Titanium & Amber palette.
+* Build a **Centered Hero Section**. Profile photo top-center, Name, exact Title, and exact bio text.
+* Directly below the bio, a clean 3-column grid/flex row for the large bold metrics (20+ Shipped, 100M+ DLs, 6+ Years Exp). On mobile, stack them in a 2x2 grid or horizontally with wrap.
+
+* **Phase 2: Featured Work (Asymmetrical Grid).**
+* Design this section with `grid-cols-1 lg:grid-cols-2 gap-6`.
+* **Project 1 (Chain of Command):** Make this card `lg:col-span-2` so it stretches 100% across the top on desktop.
+* **Project 2 & 3:** Underneath, let them flow naturally, sitting side-by-side on desktop (1 column each). YouTube embeds must maintain a perfect `aspect-video` across all viewports. Use sleek frosted-glass panels (`border-white/10`).
+
+* **Phase 3: "Project Vault" (Strict Bento Grid with Icon Backgrounds).**
+* This must look exactly like my reference screenshots (image_10.png and image_11.png). Name the section "Project Vault".
+* **The Bento Logic:** Recreate the dense, masonry-style layout. Randomly assign `col-span-2` (making a wide rectangle) to 3-4 of the 19 game cards.
+* **Core Grid:** Use `grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4`.
+* **The Bento Cell Background Pattern (The Critical Change):** The background of *each bento cell* must be made of game icons, emulating image_11.png. Each card must have a subtle, low-opacity grid/repeating pattern of various game icons (derived from my shipped titles), overlaid on the dark card background (`zinc-900`).
+* **Internal Layout:** Place the game icon top-left, and the exact title/genre text bottom-left, sitting on top of the subtle icon pattern. Include all 19 games.
+
+* **Phase 4: Operational History & Contact.**
+* A sleek, clean vertical timeline for experience, no terminal logs. Minimalist contact form at the bottom.
+
+**Your First Task:**
+Reply with "Understood. Locking data, banning AI tropes, and applying Titanium & Amber with the specific Bento grid instructions." Then, provide the complete, responsive code strictly for **Phase 1 (Global Setup & Hero)**.

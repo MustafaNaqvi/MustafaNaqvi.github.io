@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 
 const featured = [
   {
@@ -19,8 +19,8 @@ const featured = [
     title: 'Coin Crusade',
     year: '2024',
     client: 'Client Project',
-    desc: 'Play-to-earn strategy game. Started as web (JS/HTML/CSS), then Unity WebGL frontend with React handling blockchain via jslib. Node.js server + Solidity contracts.',
-    tech: ['Unity', 'React', 'Node.js', 'Solidity'],
+    desc: 'Real-time multiplayer play-to-earn strategy game. Started as web (JS/HTML/CSS), then Unity WebGL frontend with React handling blockchain via jslib. Built a custom Socket.IO network layer bridging Node.js and Unity WebGL through jslib.',
+    tech: ['Unity', 'React', 'Node.js', 'Socket.IO', 'Solidity'],
     video: 'QDuRhT3wYvA',
     highlight: 'Web3',
     links: {

@@ -1,4 +1,4 @@
-﻿export default function About() {
+export default function About() {
   return (
     <section id="about" className="py-24 sm:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,7 +13,7 @@
                 Engineering Stack
               </p>
               <div className="flex flex-wrap gap-2">
-                {['Unity', 'C#', 'TypeScript', 'Node.js', 'React', 'NestJS', 'MongoDB', 'PostgreSQL', 'Socket.IO', 'Solidity', 'Web3', 'AWS'].map(skill => (
+                {['Unreal Engine', 'C++', 'Blueprints', 'Unity', 'C#', 'TypeScript', 'Node.js', 'React', 'NestJS', 'MongoDB', 'PostgreSQL', 'Socket.IO', 'Solidity', 'Web3', 'AWS'].map(skill => (
                   <span key={skill} className="px-3 py-1.5 bg-zinc-900 border border-white/10 rounded-md text-xs font-medium text-zinc-300">
                     {skill}
                   </span>

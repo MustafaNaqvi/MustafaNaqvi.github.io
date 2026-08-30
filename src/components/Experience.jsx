@@ -1,11 +1,11 @@
-﻿const jobs = [
+const jobs = [
   {
     company: 'KryptoHive',
     location: 'Islamabad, Pakistan',
     role: 'Game Engineer',
     period: 'Mar 2024 – Present',
     current: true,
-    desc: 'Two client projects. Chain of Command is a medieval multiplayer war game shipped as a full MVP. It started turn-based and was rebuilt for real-time. I built the Node.js and Socket.IO server from scratch, handling state sync, player sessions, and the game loop. I also found and fixed the MongoDB query bottlenecks that were crashing the server under load. Coin Crusade is a play-to-earn strategy game. I built the Unity WebGL frontend embedded in React and wired up blockchain interaction via jslib bridging into Solidity contracts. Moving to the browser grew the reachable player base by ~25%. Currently building a third title targeting Steam.',
+    desc: 'Three client projects. Chain of Command is a medieval multiplayer war game shipped as a full MVP. It started turn-based and was rebuilt for real-time. I built the Node.js and Socket.IO server from scratch, handling state sync, player sessions, and the game loop. I also found and fixed the MongoDB query bottlenecks that were crashing the server under load. Coin Crusade is a play-to-earn strategy game. I built the Unity WebGL frontend embedded in React and wired up blockchain interaction via jslib bridging into Solidity contracts. Moving to the browser grew the reachable player base by ~25%. Currently building Heirs of the Moon, an open-world survival game built in Unreal Engine 5 targeting Steam, which recently completed a successful PC playtest.',
   },
   {
     company: 'Mobify / The Knights Pvt Ltd.',

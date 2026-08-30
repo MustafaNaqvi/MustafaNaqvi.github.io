@@ -25,7 +25,7 @@ export default function Hero() {
 
         <div className="w-full max-w-3xl mx-auto px-4 sm:px-6">
           <p className="text-base sm:text-lg text-zinc-300 leading-relaxed mb-12">
-            I engineer high-performance systems across mobile, PC, and WebGL. When a project needs a backend, I build it. When it needs blockchain, I write the Solidity contracts. I don't wait for other people to unblock me.
+            I engineer high-performance games and systems across PC, mobile, and WebGL using Unreal Engine and Unity. When a project needs a backend, I build it. When it needs blockchain, I write the Solidity contracts. I don't wait for other people to unblock me.
           </p>
         </div>
 

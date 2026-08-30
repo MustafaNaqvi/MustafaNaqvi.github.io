@@ -1,6 +1,20 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 
 const featured = [
+  {
+    title: 'Heirs of the Moon',
+    year: '2026',
+    client: 'Redwater Games Studio',
+    desc: 'Third-person open-world nature survival game. Engineered core gameplay systems across the entire codebase. Took broad ownership of development, building everything from advanced animal AI to the perma-death bloodline mechanics. Played a pivotal role in delivering a highly successful Steam playtest.',
+    tech: ['Unreal Engine 5', 'C++', 'Blueprints'],
+    video: 'ck1dEHJ411Q',
+    highlight: 'PC / Steam',
+    links: {
+      steam: 'https://store.steampowered.com/app/4698410/Heirs_of_the_Moon/',
+      youtube: 'https://www.youtube.com/@RedwaterGamesStudio',
+      discord: 'https://discord.gg/dfBw8qvUzz',
+    },
+  },
   {
     title: 'Chain of Command',
     year: '2025',
@@ -209,12 +223,28 @@ export default function Projects() {
                         Play Store
                       </a>
                     )}
+                    {project.links?.steam && (
+                      <a href={project.links.steam} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-white hover:text-gray-300 transition-colors flex items-center gap-1.5">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M11.979 0C5.368 0 0 5.367 0 11.978c0 4.962 3.018 9.215 7.318 11.02l3.414-4.846c-.055-.175-.084-.363-.084-.555 0-1.077.876-1.954 1.953-1.954.129 0 .256.012.379.035l2.748-4.004c-.015-.09-.022-.183-.022-.278 0-2.024 1.642-3.666 3.666-3.666 2.023 0 3.665 1.642 3.665 3.666 0 2.024-1.642 3.665-3.665 3.665-1.749 0-3.21-1.233-3.57-2.871l-2.733 3.982c.11.234.17.495.17.768 0 1.077-.876 1.954-1.954 1.954-1.077 0-1.953-.877-1.953-1.954 0-.312.072-.605.198-.867L5.786 16.71c-.705.578-1.156 1.455-1.156 2.434 0 1.744 1.414 3.158 3.158 3.158 1.545 0 2.836-1.11 3.109-2.58l.006-.027 5.171 1.761C19.78 19.986 24 16.48 24 11.978 24 5.367 18.632 0 11.979 0zM19.37 11.371c-1.119 0-2.028-.909-2.028-2.028s.909-2.028 2.028-2.028 2.028.909 2.028 2.028-.909 2.028-2.028 2.028zm-6.757 5.23c-.538 0-.974-.436-.974-.974 0-.538.436-.974.974-.974.537 0 .973.436.973.974 0 .538-.436.974-.973.974z"/>
+                        </svg>
+                        Steam
+                      </a>
+                    )}
                     {project.links?.youtube && (
                       <a href={project.links.youtube} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-red-500 hover:text-red-400 transition-colors flex items-center gap-1.5">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                         </svg>
                         YouTube
+                      </a>
+                    )}
+                    {project.links?.discord && (
+                      <a href={project.links.discord} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[#5865F2] hover:text-[#4752C4] transition-colors flex items-center gap-1.5">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z" />
+                        </svg>
+                        Discord
                       </a>
                     )}
                     {project.links?.reddit && (

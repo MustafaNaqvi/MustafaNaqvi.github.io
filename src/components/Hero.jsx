@@ -40,7 +40,7 @@ export default function Hero() {
             <div className="text-xs sm:text-sm font-medium text-zinc-400 uppercase tracking-wider">downloads</div>
           </div>
           <div className="flex flex-col items-center justify-center bg-zinc-900 border border-white/5 rounded-xl p-6">
-            <div className="text-3xl sm:text-4xl font-bold text-white mb-1">6+</div>
+            <div className="text-3xl sm:text-4xl font-bold text-white mb-1">7+</div>
             <div className="text-xs sm:text-sm font-medium text-zinc-400 uppercase tracking-wider">years</div>
           </div>
         </div>

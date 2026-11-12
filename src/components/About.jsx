@@ -1,15 +1,15 @@
 export default function About() {
   return (
-    <section id="about" className="py-24 sm:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" aria-labelledby="about-title" className="py-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-12">
           
           {/* Left Column: Heading and Tech Stack */}
           <div className="lg:col-span-1 mb-10 lg:mb-0">
-            <h2 className="section-title mb-8">About</h2>
+            <h2 id="about-title" className="section-title mb-8">About</h2>
             
             <div>
-              <p className="text-sm text-zinc-500 uppercase tracking-wider font-semibold mb-4">
+              <p className="text-sm text-zinc-400 uppercase tracking-wider font-semibold mb-4">
                 Engineering Stack
               </p>
               <div className="flex flex-wrap gap-2">
@@ -41,7 +41,7 @@ export default function About() {
             
             <p className="text-lg leading-relaxed text-zinc-400">
               Code reviews are like boss fights to me. I actually look forward to 
-              them. There's something satisfying about digging into someone's 
+              them. There&apos;s something satisfying about digging into someone&apos;s 
               architecture decisions, finding the weak spots, suggesting better 
               patterns. Nothing annoys me more than seeing a 2000-line GameManager 
               class or a codebase where everything talks to everything else.

@@ -38,3 +38,10 @@ lerna-debug.log*
 
 # Testing
 coverage
+.playwright-mcp
+
+# Local tool config
+.claude/
+
+# Local notes
+insttructions.txt

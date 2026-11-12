@@ -3,13 +3,84 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bg: #09090B;
+    --surface: #18181b;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #f4f4f5;
+    --text-muted: #a1a1aa;
+    --accent: #f59e0b;
+    color-scheme: dark;
+  }
+
   html {
     scroll-behavior: smooth;
+    scrollbar-color: #3f3f46 var(--bg);
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
   body {
-    background-color: #09090B;
-    color: #f4f4f5;
+    background-color: var(--bg);
+    color: var(--text);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     -webkit-font-smoothing: antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  /* Keep anchored sections clear of the fixed navbar */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  ::selection {
+    background: rgba(245, 158, 11, 0.35);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  input, textarea {
+    caret-color: var(--accent);
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 999px; border: 2px solid var(--bg); }
+  ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+}
+
+@layer components {
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold tracking-tight text-white;
+    text-wrap: balance;
+  }
+
+  /* Hero backdrop: a 48px titanium grid that fades out toward the edges,
+     with a faint amber glow behind the portrait. Static, so nothing repaints. */
+  .hero-backdrop {
+    background-image:
+      radial-gradient(42rem 26rem at 18% 30%, rgba(245, 158, 11, 0.09), transparent 70%),
+      linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 100% 100%, 48px 48px, 48px 48px;
+    background-position: 0 0, -1px -1px, -1px -1px;
+    -webkit-mask-image: radial-gradient(ellipse 85% 75% at 35% 40%, #000 30%, transparent 80%);
+    mask-image: radial-gradient(ellipse 85% 75% at 35% 40%, #000 30%, transparent 80%);
+  }
+}
+
+/* Honor reduced-motion for CSS transitions and transforms too */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

@@ -1,6 +1,6 @@
 # Mustafa Naqvi - Portfolio
 
-Personal portfolio website showcasing 6+ years of game development and backend engineering experience with 100M+ combined downloads.
+Personal portfolio website showcasing 7+ years of game development and backend engineering experience with 100M+ combined downloads.
 
 ## 🎮 About
 

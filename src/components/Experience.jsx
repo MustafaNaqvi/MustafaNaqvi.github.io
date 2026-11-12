@@ -32,15 +32,18 @@ const jobs = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 bg-[#09090B] border-t border-white/5">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-16">Career Progression</h2>
+    <section id="experience" aria-labelledby="experience-title" className="py-24 bg-[#09090B] border-t border-white/5">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl">
+        <h2 id="experience-title" className="section-title mb-16">Career Progression</h2>
 
-        <div className="space-y-12">
-          {jobs.map((job, i) => (
+        <div className="relative space-y-12">
+          {/* Continuous timeline spine (desktop) */}
+          <div className="hidden sm:block absolute left-[206px] top-6 bottom-6 w-px bg-white/10" aria-hidden="true" />
+          {jobs.map((job) => (
             <div 
               key={job.company}
-              className="relative pl-8 sm:pl-0"
+              className="relative pl-6 sm:pl-0"
             >
               {/* Timeline line for mobile */}
               <div className="sm:hidden absolute left-0 top-2 bottom-[-48px] w-px bg-white/10" />
@@ -48,8 +51,8 @@ export default function Experience() {
               <div className="sm:hidden absolute left-[-4px] top-2 w-2 h-2 rounded-full bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]" />
 
               <div className="grid sm:grid-cols-[200px_1fr] gap-4 sm:gap-8 items-start">
-                <div className="flex flex-col sm:items-end sm:text-right pt-1">
-                  <span className="text-sm font-semibold text-zinc-500 uppercase tracking-widest">
+                <div className="flex flex-col items-start sm:items-end sm:text-right pt-1">
+                  <span className="text-sm font-semibold text-zinc-400 uppercase tracking-widest">
                     {job.period}
                   </span>
                   {job.current && (
@@ -59,20 +62,20 @@ export default function Experience() {
                   )}
                 </div>
                 
-                <div className="bg-zinc-900 border border-white/5 rounded-2xl p-6 hover:border-white/10 transition-colors relative">
+                <div className="bg-zinc-900 border border-white/5 rounded-2xl p-5 sm:p-6 hover:border-white/10 transition-colors relative">
                   {/* Timeline connector for desktop */}
                   <div className="hidden sm:block absolute left-[-25px] top-6 w-6 h-px bg-white/10" />
-                  <div className="hidden sm:block absolute left-[-29px] top-[22px] w-2 h-2 rounded-full bg-zinc-700 border-2 border-[#09090B]" />
+                  <div className={`hidden sm:block absolute left-[-30px] top-[21px] w-2.5 h-2.5 rounded-full border-2 border-[#09090B] ${job.current ? 'bg-amber-500' : 'bg-zinc-500'}`} />
 
                   <h3 className="text-xl font-bold text-white mb-1">
                     {job.role}
                   </h3>
                   <div className="flex flex-wrap items-center gap-2 mb-4">
-                    <span className="text-amber-500 font-medium">{job.company}</span>
+                    <span className="text-zinc-100 font-medium">{job.company}</span>
                     <span className="text-zinc-600">•</span>
                     <span className="text-sm text-zinc-400">{job.location.replace(' (Remote)', '')}</span>
                     {job.location.includes('Remote') && (
-                      <span className="px-2 py-0.5 bg-blue-500/10 text-blue-400 text-[10px] font-bold uppercase tracking-wider rounded">
+                      <span className="px-2 py-0.5 bg-white/5 text-zinc-300 text-[11px] font-semibold uppercase tracking-wider rounded ring-1 ring-white/10">
                         Remote
                       </span>
                     )}
@@ -88,22 +91,23 @@ export default function Experience() {
 
         {/* Education */}
         <div className="mt-20 pt-16 border-t border-white/5">
-          <h3 className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-8">
+          <h3 className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-8">
             Education
           </h3>
           <div className="grid sm:grid-cols-[200px_1fr] gap-4 sm:gap-8 items-start">
-            <div className="text-sm font-semibold text-zinc-500 uppercase tracking-widest sm:text-right pt-1">
+            <div className="text-sm font-semibold text-zinc-400 uppercase tracking-widest sm:text-right pt-1">
               2015 - 2019
             </div>
             <div className="bg-zinc-900 border border-white/5 rounded-2xl p-6">
-              <h3 className="text-lg font-bold text-white mb-1">
+              <h4 className="text-lg font-bold text-white mb-1">
                 BSc Computer Science
-              </h3>
-              <p className="text-amber-500 font-medium">
+              </h4>
+              <p className="text-zinc-300 font-medium">
                 COMSATS University, Islamabad
               </p>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>

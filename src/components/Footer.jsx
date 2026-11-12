@@ -1,24 +1,27 @@
-﻿export default function Footer() {
+﻿const links = [
+  { label: 'GitHub', href: 'https://github.com/MustafaNaqvi', external: true },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/mustafa-naqvi', external: true },
+  { label: 'Email', href: 'mailto:mustafa-naqvi@outlook.com' },
+]
+
+export default function Footer() {
   return (
-    <footer style={{
-      padding: '40px 0',
-      borderTop: '1px solid var(--border)',
-    }}>
-      <div className="container" style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-        gap: '16px',
-      }}>
-        <p style={{ fontSize: '14px', color: 'var(--text-muted)' }}>
-          © {new Date().getFullYear()} Mustafa Naqvi
-        </p>
-        <div style={{ display: 'flex', gap: '20px' }}>
-          <a href="https://github.com/MustafaNaqvi" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', color: 'var(--text-muted)' }}>GitHub</a>
-          <a href="https://linkedin.com/in/mustafa-naqvi" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', color: 'var(--text-muted)' }}>LinkedIn</a>
-          <a href="mailto:mustafa-naqvi@outlook.com" style={{ fontSize: '14px', color: 'var(--text-muted)' }}>Email</a>
-        </div>
+    <footer className="border-t border-white/5 py-10">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <p className="text-sm text-zinc-400">© {new Date().getFullYear()} Mustafa Naqvi</p>
+        <ul className="flex gap-6">
+          {links.map((l) => (
+            <li key={l.label}>
+              <a
+                href={l.href}
+                {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className="text-sm text-zinc-400 transition-colors hover:text-white"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </footer>
   )

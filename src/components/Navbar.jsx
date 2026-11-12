@@ -1,16 +1,59 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+
+const navLinks = [
+  { name: 'Work', href: '#work' },
+  { name: 'About', href: '#about' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Contact', href: '#contact' },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState('');
   const navRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Highlight the last section whose top has passed 40% of the viewport;
+  // at the very bottom of the page, the final section wins.
+  useEffect(() => {
+    const update = () => {
+      const sections = navLinks.map((l) => document.querySelector(l.href)).filter(Boolean);
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+      let current = '';
+      if (atBottom && sections.length) {
+        current = `#${sections[sections.length - 1].id}`;
+      } else {
+        for (const s of sections) {
+          if (s.getBoundingClientRect().top <= window.innerHeight * 0.4) current = `#${s.id}`;
+        }
+      }
+      setActive(current);
+    };
+    // Four rect reads per scroll event is cheap; React skips re-renders when the value is unchanged.
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e) => e.key === 'Escape' && setMenuOpen(false);
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [menuOpen]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -21,7 +64,7 @@ export default function Navbar() {
 
     if (menuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-      document.addEventListener('touchstart', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside, { passive: true });
     }
 
     return () => {
@@ -39,7 +82,7 @@ export default function Navbar() {
       y: "-100%",
       transition: {
         duration: 0.5,
-        ease: [0.22, 1, 0.36, 1], // Custom cubic-bezier for snappy HUD feel
+        ease: [0.22, 1, 0.36, 1], // Exponential ease-out
       }
     },
     open: {
@@ -67,13 +110,6 @@ export default function Navbar() {
     }
   };
 
-  const navLinks = [
-    { name: 'Work', href: '#work' },
-    { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
   return (
     <nav 
       ref={navRef}
@@ -89,15 +125,21 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
-              className="text-sm font-medium text-zinc-400 hover:text-amber-500 transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = active === link.href;
+            return (
+              <a
+                key={link.name}
+                href={link.href}
+                aria-current={isActive ? 'location' : undefined}
+                className={`relative py-1 text-sm font-medium transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-amber-500 after:transition-transform after:duration-300 after:ease-out ${
+                  isActive ? 'text-white after:scale-x-100' : 'text-zinc-400 hover:text-white after:scale-x-0'
+                }`}
+              >
+                {link.name}
+              </a>
+            );
+          })}
           <a 
             href="https://drive.google.com/file/d/126JK5nhnlid-hDIT9NL61c0U4jNtD1fm/view"
             target="_blank"
@@ -110,9 +152,11 @@ export default function Navbar() {
 
         {/* Hamburger button (Mobile only) */}
         <button 
-          className="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none group relative"
+          className="md:hidden flex flex-col justify-center items-center w-11 h-11 space-y-1.5 group relative"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
         >
           <span 
             className={`block w-6 h-0.5 bg-white transition-transform duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] origin-center ${
@@ -135,7 +179,8 @@ export default function Navbar() {
       {/* Mobile menu dropdown */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div 
+          <motion.div
+            id="mobile-menu"
             initial="closed"
             animate="open"
             exit="closed"
@@ -149,7 +194,10 @@ export default function Navbar() {
                   href={link.href} 
                   onClick={handleLinkClick}
                   variants={linkVariants}
-                  className="w-full text-left text-2xl font-bold text-zinc-300 py-4 border-b border-white/5 hover:text-amber-500 transition-colors"
+                  aria-current={active === link.href ? 'location' : undefined}
+                  className={`w-full text-left text-2xl font-bold py-4 border-b border-white/5 hover:text-amber-500 transition-colors ${
+                    active === link.href ? 'text-amber-500' : 'text-zinc-300'
+                  }`}
                 >
                   {link.name}
                 </motion.a>
@@ -163,7 +211,7 @@ export default function Navbar() {
                 className="mt-8 w-full flex items-center justify-between px-6 py-4 bg-amber-500 hover:bg-amber-600 text-[#09090B] text-xl font-bold rounded-xl transition-colors"
               >
                 <span>View Resume</span>
-                <span>→</span>
+                <ArrowRight className="h-6 w-6" aria-hidden="true" />
               </motion.a>
             </div>
           </motion.div>

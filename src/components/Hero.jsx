@@ -1,25 +1,5 @@
-import { lazy, Suspense, useEffect, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { motion, useReducedMotion } from 'framer-motion'
-
-// three.js lives in its own chunk and is only fetched once the page is idle
-const ThreeHeroCanvas = lazy(() => import('./ThreeHeroCanvas'))
-
-// Mount the 3D scene after first paint and the browser's idle point, so it never
-// competes with the portrait and text for the initial render.
-function useIdleMount(timeout = 1500) {
-  const [ready, setReady] = useState(false)
-  useEffect(() => {
-    const go = () => setReady(true)
-    if ('requestIdleCallback' in window) {
-      const id = window.requestIdleCallback(go, { timeout })
-      return () => window.cancelIdleCallback(id)
-    }
-    const id = window.setTimeout(go, 600)
-    return () => window.clearTimeout(id)
-  }, [timeout])
-  return ready
-}
 
 const RESUME_URL = 'https://drive.google.com/file/d/126JK5nhnlid-hDIT9NL61c0U4jNtD1fm/view'
 
@@ -33,7 +13,6 @@ const EASE_OUT_EXPO = [0.16, 1, 0.3, 1]
 
 export default function Hero() {
   const reduceMotion = useReducedMotion()
-  const show3D = useIdleMount()
 
   return (
     <section
@@ -42,16 +21,6 @@ export default function Hero() {
     >
       {/* Static titanium grid with a faint amber glow behind the portrait: pure CSS, no layout cost */}
       <div className="hero-backdrop pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
-
-      {/* Interactive night forest (three.js). Covers the grid once ready; the grid stays as the fallback. */}
-      {show3D && (
-        <Suspense fallback={null}>
-          <ThreeHeroCanvas className="absolute inset-0 -z-10" />
-        </Suspense>
-      )}
-      {/* Scrims keep the text at full contrast and fade the scene into the page below */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-[#09090B]/85 via-[#09090B]/55 to-[#09090B]/20" aria-hidden="true" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-b from-transparent to-[#09090B]" aria-hidden="true" />
 
       {/* Same container and gutters as Featured Work, so the left edges line up */}
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 sm:gap-8 sm:px-6 lg:flex-row lg:items-center lg:gap-14 lg:px-8">

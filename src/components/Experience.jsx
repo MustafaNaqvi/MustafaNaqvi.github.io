@@ -5,7 +5,7 @@ const jobs = [
     role: 'Game Engineer',
     period: 'Mar 2024 – Present',
     current: true,
-    desc: 'Three client projects. Chain of Command is a medieval multiplayer war game shipped as a full MVP. It started turn-based and was rebuilt for real-time. I built the Node.js and Socket.IO server from scratch, handling state sync, player sessions, and the game loop. I also found and fixed the MongoDB query bottlenecks that were crashing the server under load. Coin Crusade is a play-to-earn strategy game. I built the Unity WebGL frontend embedded in React and wired up blockchain interaction via jslib bridging into Solidity contracts. Moving to the browser grew the reachable player base by ~25%. Currently building Heirs of the Moon, an open-world survival game built in Unreal Engine 5 targeting Steam, which recently completed a successful PC playtest.',
+    desc: 'Three client projects. Chain of Command is a medieval strategy game. It started turn-based and was rebuilt as real-time player vs CPU. I built the Unity Windows client, an authoritative Node.js server that validates moves and provides the AI/CPU moveset, and a NestJS API with MongoDB for profile and data CRUD. Multiplayer was planned, but the client paused development when the budget ran out. Coin Crusade is a play-to-earn strategy game. I built the Unity WebGL frontend embedded in React and wired up blockchain interaction via jslib bridging into Solidity contracts. I also built its real-time multiplayer Node.js and Socket.IO server from scratch, supporting 40+ concurrent players with under 120 ms latency, with NestJS for MongoDB CRUD, and resolved 3 critical MongoDB query bottlenecks that were crashing the server. Moving to the browser grew the reachable player base by ~25%. Currently building Heirs of the Moon, an open-world survival game built in Unreal Engine 5 targeting Steam, which recently completed a successful PC playtest. I work AI-first: I use Claude Code and agentic workflows for implementation, refactoring, and debugging across Unity, Unreal, and Node.js codebases, while owning architecture and review.',
   },
   {
     company: 'Mobify / The Knights Pvt Ltd.',
@@ -19,7 +19,7 @@ const jobs = [
     location: 'Mississauga, ON, Canada (Remote)',
     role: 'Game Developer',
     period: 'Feb 2021 – Jan 2022',
-    desc: 'Shipped Judgement Day, Lost Love, and Sword Fighter. Got Trapped Within! back on the Play Store in 2 weeks after a critical suspension. Revenue was down until it was resolved. Set up Jenkins CI/CD and took the team from manual builds to daily automated ones, cutting deploy time by 30%.',
+    desc: 'Shipped Judgement Day, Lost Love, and Tap Fighters. Got Trapped Within! back on the Play Store in 2 weeks after a critical suspension. Revenue was down until it was resolved. Set up Jenkins CI/CD and took the team from manual builds to daily automated ones, cutting deploy time by 30%.',
   },
   {
     company: 'COMSATS Software Solutions & Kay2Tech',

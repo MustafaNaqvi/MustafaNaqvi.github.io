@@ -13,7 +13,7 @@ export default function About() {
                 Engineering Stack
               </p>
               <div className="flex flex-wrap gap-2">
-                {['Unreal Engine', 'C++', 'Blueprints', 'Unity', 'C#', 'TypeScript', 'Node.js', 'React', 'NestJS', 'MongoDB', 'PostgreSQL', 'Socket.IO', 'Solidity', 'Web3', 'AWS'].map(skill => (
+                {['Unreal Engine', 'C++', 'Blueprints', 'Unity', 'C#', 'TypeScript', 'Node.js', 'React', 'NestJS', 'MongoDB', 'PostgreSQL', 'Socket.IO', 'Solidity', 'Web3', 'AWS', 'Claude Code'].map(skill => (
                   <span key={skill} className="px-3 py-1.5 bg-zinc-900 border border-white/10 rounded-md text-xs font-medium text-zinc-300">
                     {skill}
                   </span>
@@ -35,8 +35,9 @@ export default function About() {
               Single-player, you can fake a lot of things right up until launch.
               Multiplayer exposes every bad assumption immediately: wrong authority
               models, sloppy state sync, or a single slow query when a match resolves.
-              Building the server for Chain of Command from scratch, including the game loop,
-              state sync, and player sessions, is where that clicked for me.
+              Building the real-time Socket.IO server for Coin Crusade from scratch, and
+              resolving the MongoDB query bottlenecks that were crashing it, is where that
+              clicked for me.
             </p>
             
             <p className="text-lg leading-relaxed text-zinc-400">
@@ -45,6 +46,9 @@ export default function About() {
               architecture decisions, finding the weak spots, suggesting better 
               patterns. Nothing annoys me more than seeing a 2000-line GameManager 
               class or a codebase where everything talks to everything else.
+              I work AI-first: I use Claude Code and agentic workflows for implementation,
+              refactoring, and debugging across Unity, Unreal, and Node.js codebases, while
+              owning architecture and review.
             </p>
           </div>
 

@@ -152,7 +152,7 @@ function StatCell() {
 
 function FeaturedCard({ project, isLead, isWide }) {
   const badges = [project.highlight, project.downloads && `${project.downloads} downloads`].filter(Boolean)
-  const linkOrder = ['steam', 'playstore', 'youtube', 'discord', 'reddit', 'twitter']
+  const linkOrder = ['steam', 'website', 'playstore', 'youtube', 'discord', 'reddit', 'twitter']
   const titleId = `project-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`
 
   return (

@@ -5,7 +5,7 @@ Personal portfolio website showcasing 7+ years of game development and backend e
 ## 🎮 About
 
 Game Developer & Backend Engineer specializing in:
-- Real-time multiplayer systems (Photon, WebSocket, Mirror)
+- Real-time multiplayer systems (WebSocket)
 - Unity game development (C#, WebGL, Mobile)
 - Backend APIs (NestJS, Node.js, MongoDB)
 

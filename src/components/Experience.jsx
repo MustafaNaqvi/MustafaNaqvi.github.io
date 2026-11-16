@@ -5,7 +5,13 @@ const jobs = [
     role: 'Game Engineer',
     period: 'Mar 2024 – Present',
     current: true,
-    desc: 'Three client projects. Chain of Command is a medieval strategy game. It started turn-based and was rebuilt as real-time player vs CPU. I built the Unity Windows client, an authoritative Node.js server that validates moves and provides the AI/CPU moveset, and a NestJS API with MongoDB for profile and data CRUD. Multiplayer was planned, but the client paused development when the budget ran out. Coin Crusade is a play-to-earn strategy game. I built the Unity WebGL frontend embedded in React and wired up blockchain interaction via jslib bridging into Solidity contracts. I also built its real-time multiplayer Node.js and Socket.IO server from scratch, supporting 40+ concurrent players with under 120 ms latency, with NestJS for MongoDB CRUD, and resolved 3 critical MongoDB query bottlenecks that were crashing the server. Moving to the browser grew the reachable player base by ~25%. Currently building Heirs of the Moon, an open-world survival game built in Unreal Engine 5 targeting Steam, which recently completed a successful PC playtest. I work AI-first: I use Claude Code and agentic workflows for implementation, refactoring, and debugging across Unity, Unreal, and Node.js codebases, while owning architecture and review.',
+    // Split at its own sentence breaks so the entry scans; wording unchanged.
+    desc: [
+      'Three client projects. Chain of Command is a medieval strategy game. It started turn-based and was rebuilt as real-time player vs CPU. I built the Unity Windows client, an authoritative Node.js server that validates moves and provides the AI/CPU moveset, and a NestJS API with MongoDB for profile and data CRUD. Multiplayer was planned, but the client paused development when the budget ran out.',
+      'Coin Crusade is a play-to-earn strategy game. I built the Unity WebGL frontend embedded in React and wired up blockchain interaction via jslib bridging into Solidity contracts. I also built its real-time multiplayer Node.js and Socket.IO server from scratch, supporting 40+ concurrent players with under 120 ms latency, with NestJS for MongoDB CRUD, and resolved 3 critical MongoDB query bottlenecks that were crashing the server. Moving to the browser grew the reachable player base by ~25%.',
+      'Currently building Heirs of the Moon, an open-world survival game built in Unreal Engine 5 targeting Steam, which recently completed a successful PC playtest.',
+      'I work AI-first: I use Claude Code and agentic workflows for implementation, refactoring, and debugging across Unity, Unreal, and Node.js codebases, while owning architecture and review.',
+    ],
   },
   {
     company: 'Mobify / The Knights Pvt Ltd.',
@@ -62,7 +68,8 @@ export default function Experience() {
                   )}
                 </div>
                 
-                <div className="bg-zinc-900 border border-white/5 rounded-2xl p-5 sm:p-6 hover:border-white/10 transition-colors relative">
+                {/* Phones drop the card chrome so the text gets the full column width */}
+                <div className="relative sm:rounded-2xl sm:border sm:border-white/5 sm:bg-zinc-900 sm:p-6 sm:transition-colors sm:hover:border-white/10">
                   {/* Timeline connector for desktop */}
                   <div className="hidden sm:block absolute left-[-25px] top-6 w-6 h-px bg-white/10" />
                   <div className={`hidden sm:block absolute left-[-30px] top-[21px] w-2.5 h-2.5 rounded-full border-2 border-[#09090B] ${job.current ? 'bg-amber-500' : 'bg-zinc-500'}`} />
@@ -75,14 +82,16 @@ export default function Experience() {
                     <span className="text-zinc-600">•</span>
                     <span className="text-sm text-zinc-400">{job.location.replace(' (Remote)', '')}</span>
                     {job.location.includes('Remote') && (
-                      <span className="px-2 py-0.5 bg-white/5 text-zinc-300 text-[11px] font-semibold uppercase tracking-wider rounded ring-1 ring-white/10">
+                      <span className="px-2 py-0.5 bg-white/5 text-zinc-300 text-xs font-semibold uppercase tracking-wider rounded ring-1 ring-white/10">
                         Remote
                       </span>
                     )}
                   </div>
-                  <p className="text-zinc-400 leading-relaxed">
-                    {job.desc}
-                  </p>
+                  <div className="max-w-[65ch] space-y-3 leading-relaxed text-zinc-400">
+                    {[].concat(job.desc).map((para) => (
+                      <p key={para.slice(0, 24)}>{para}</p>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

@@ -20,6 +20,8 @@ export const featured = [
     desc: 'Medieval strategy game. Started turn-based and rebuilt as real-time player vs CPU. I built the Unity Windows client, an authoritative Node.js server that validates moves for player-vs-CPU battles and provides the AI/CPU moveset, and a NestJS API with MongoDB for profile and data CRUD. Multiplayer was planned, but the client paused development when the budget ran out.',
     tech: ['Unity', 'NestJS', 'MongoDB', 'Node.js'],
     video: 'DSNfKVyialg',
+    // Button labels match each video's published title
+    videoLabel: 'Play teaser',
     note: 'Currently paused',
     links: {
       website: 'https://chainofcommand.game/',
@@ -35,6 +37,7 @@ export const featured = [
     desc: 'Real-time multiplayer play-to-earn strategy game. Started as web (JS/HTML/CSS), then a Unity WebGL build embedded in React, with blockchain handled via jslib. I built the real-time multiplayer Node.js + Socket.IO server from scratch, bridged to Unity WebGL through jslib, supporting 40+ concurrent players with under 120 ms latency, with NestJS for MongoDB CRUD. I also resolved 3 critical MongoDB query bottlenecks that were crashing the server.',
     tech: ['Unity', 'React', 'Node.js', 'Socket.IO', 'NestJS', 'MongoDB', 'Solidity'],
     video: 'QDuRhT3wYvA',
+    videoLabel: 'Watch tutorial',
     highlight: 'Web3',
     links: {
       youtube: 'https://www.youtube.com/channel/UCzflPF4RF7GyIaJvNiOnFNA',
@@ -47,6 +50,7 @@ export const featured = [
     desc: 'Combat game that hit 10M+ downloads. Built combat systems, character controllers, and core gameplay.',
     tech: ['Unity', 'C#', 'Mobile'],
     video: 'NIojFnq7FmY',
+    videoNote: 'Trailer published by Mobify as “Karate Legends”',
     links: {
       playstore: 'https://play.google.com/store/apps/details?id=com.gxs.karatefighting.superhero.king.fighting.games',
     },

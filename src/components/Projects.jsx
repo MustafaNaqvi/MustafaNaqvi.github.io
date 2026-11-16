@@ -13,9 +13,10 @@ const vaultGames = otherGames
   .sort((a, b) => (DOWNLOAD_RANK[b.game.downloads] || 0) - (DOWNLOAD_RANK[a.game.downloads] || 0) || a.i - b.i)
   .map(({ game }) => game)
 
-// Background texture for each cell: a fixed slice of the icon pool, so it never reshuffles.
-const iconPool = otherGames.filter((g) => g.icon).map((g) => g.icon)
-const patternFor = (index) => Array.from({ length: 12 }, (_, k) => iconPool[(index * 5 + k) % iconPool.length])
+// Background texture: one pre-composited greyscale sheet of the game icons (288x360,
+// public/games/vault-texture.jpg), offset per cell so neighbours never line up.
+const TEXTURE_URL = '/games/vault-texture.jpg'
+const textureOffset = (index) => `${(index * 72 * 3) % 288}px ${(index * 72 * 2) % 360}px`
 
 // Fallback game icon for titles without an image
 function GameIcon({ name, className }) {
@@ -36,14 +37,15 @@ function cellLabel(game) {
 function IconTexture({ index }) {
   return (
     <div
-      className="pointer-events-none absolute inset-0 grid grid-cols-4 gap-2 p-2 opacity-[0.08] transition-opacity duration-500 group-hover:opacity-[0.14]"
-      style={{ transform: 'rotate(-5deg) scale(1.2)' }}
+      className="pointer-events-none absolute -inset-[15%] opacity-[0.08] transition-opacity duration-500 group-hover:opacity-[0.14]"
+      style={{
+        transform: 'rotate(-5deg)',
+        backgroundImage: `url(${TEXTURE_URL})`,
+        backgroundSize: '288px 360px',
+        backgroundPosition: textureOffset(index),
+      }}
       aria-hidden="true"
-    >
-      {patternFor(index).map((iconUrl, i) => (
-        <img key={i} src={iconUrl} alt="" width="64" height="64" loading="lazy" decoding="async" className="aspect-square w-full rounded-md object-cover grayscale" />
-      ))}
-    </div>
+    />
   )
 }
 
@@ -130,22 +132,26 @@ function WideCell({ game, index }) {
           {game.name}
         </h3>
         <p className="text-xs font-medium uppercase tracking-wider text-zinc-400">{game.type}</p>
+        {/* Phones: the count sits under the title so the title keeps the row's width */}
+        <p className="mt-2 text-sm text-zinc-400 sm:hidden">
+          <span className="text-xl font-bold tabular-nums tracking-tight text-white">{game.downloads}</span> downloads
+        </p>
       </div>
 
-      <div className="relative z-10 flex-shrink-0 text-right">
-        <div className="text-2xl font-bold tabular-nums tracking-tight text-white sm:text-4xl">{game.downloads}</div>
-        <div className="text-[11px] font-medium uppercase tracking-wider text-zinc-400">downloads</div>
+      <div className="relative z-10 hidden flex-shrink-0 text-right sm:block">
+        <div className="text-4xl font-bold tabular-nums tracking-tight text-white">{game.downloads}</div>
+        <div className="text-xs font-medium uppercase tracking-wider text-zinc-400">downloads</div>
       </div>
     </a>
   )
 }
 
-// Fills the last grid cell and carries the archive's headline number.
+// Fills the last grid cell with the shipped-titles count (the 100M+ figures already sit on the cards above).
 function StatCell() {
   return (
     <div className="relative col-span-1 flex min-h-[168px] flex-col justify-end overflow-hidden rounded-2xl border border-amber-500/25 bg-gradient-to-br from-amber-500/[0.12] via-zinc-900 to-zinc-900 p-5">
-      <div className="text-4xl font-bold tabular-nums tracking-tight text-amber-500">100M+</div>
-      <div className="mt-1 text-sm font-medium text-zinc-300">Combined Downloads</div>
+      <div className="text-4xl font-bold tabular-nums tracking-tight text-amber-500">20+</div>
+      <div className="mt-1 text-sm font-medium text-zinc-300">shipped games</div>
     </div>
   )
 }
@@ -176,7 +182,8 @@ function FeaturedCard({ project, isLead, isWide }) {
         } ${isWide && !isLead ? 'lg:flex-row-reverse' : ''}`}
       >
         <div className={`w-full ${isWide ? 'lg:w-[55%] lg:flex-shrink-0' : ''}`}>
-          <YouTubeFacade id={project.video} title={project.title} badges={badges} />
+          <YouTubeFacade id={project.video} title={project.title} badges={badges} label={project.videoLabel} />
+          {project.videoNote && <p className="mt-2 text-xs text-zinc-400">{project.videoNote}</p>}
         </div>
 
         <div className="flex flex-1 flex-col">

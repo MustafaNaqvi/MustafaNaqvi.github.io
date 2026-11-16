@@ -50,7 +50,7 @@ export default function YouTubeFacade({ id, title, badges = [], label = 'Play tr
               {badges.map((b) => (
                 <span
                   key={b}
-                  className="rounded-md bg-black/60 px-2 py-1 text-[11px] font-semibold uppercase tracking-wider text-zinc-100 ring-1 ring-white/15 backdrop-blur-sm"
+                  className="rounded-md bg-black/60 px-2 py-1 text-xs font-semibold uppercase tracking-wider text-zinc-100 ring-1 ring-white/15 backdrop-blur-sm"
                 >
                   {b}
                 </span>

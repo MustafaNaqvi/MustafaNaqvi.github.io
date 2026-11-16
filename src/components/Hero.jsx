@@ -52,7 +52,7 @@ export default function Hero() {
             Mustafa Naqvi
           </h1>
           <p className="mb-4 text-balance text-lg font-medium text-zinc-300 sm:mb-5 sm:text-xl lg:mb-6 lg:mt-4 lg:text-2xl">
-            Game Developer <span className="text-amber-500">&amp;</span> Full Stack Engineer
+            Game Developer <span className="text-zinc-500">&amp;</span> Full Stack Engineer
           </p>
 
           <p className="mb-6 max-w-[62ch] text-base leading-relaxed text-zinc-400 sm:mb-7 sm:text-lg">
@@ -67,7 +67,7 @@ export default function Hero() {
                 initial={reduceMotion ? false : { opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 + i * 0.09, ease: EASE_OUT_EXPO }}
-                className="flex flex-col rounded-xl border border-amber-500/20 bg-amber-500/[0.07] px-3 py-1.5 sm:flex-row sm:items-baseline sm:gap-2 sm:rounded-full sm:px-4 sm:py-2"
+                className="flex flex-col rounded-xl border border-white/10 bg-white/[0.03] px-3 py-1.5 sm:flex-row sm:items-baseline sm:gap-2 sm:rounded-full sm:px-4 sm:py-2"
               >
                 <span className="text-base font-bold leading-tight tabular-nums text-amber-500 sm:text-lg">{s.value}</span>
                 <span className="text-xs font-medium text-zinc-300 sm:text-sm">{s.label}</span>

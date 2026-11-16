@@ -9,13 +9,13 @@ export default function Footer() {
     <footer className="border-t border-white/5 py-10">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <p className="text-sm text-zinc-400">© {new Date().getFullYear()} Mustafa Naqvi</p>
-        <ul className="flex gap-6">
+        <ul className="flex gap-2">
           {links.map((l) => (
             <li key={l.label}>
               <a
                 href={l.href}
                 {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="text-sm text-zinc-400 transition-colors hover:text-white"
+                className="inline-flex min-h-[44px] items-center px-2 text-sm text-zinc-400 transition-colors hover:text-white"
               >
                 {l.label}
               </a>
